@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -14,14 +17,20 @@
     </div>
     <nav>
         <ul id="onglets">
-            <li class="lio"><a href="main.html">Home</a></li>          
-            <li class="lio"><a href="profile.html">Profile</a></li>
-            <li class="lio"><a href="main.html">Déconnexion</a></li>
+            <?php require "entete.php"; ?>
         </ul>
     </nav>
 </header>
 
 <body>
+    <?php
+        if ((isset($_SESSION["pseudo"]))&&(isset($_GET["deco"])))
+		{
+			session_destroy();
+			header('Location: login.php');
+        }
+        else{
+    ?>    
     <div id="infos">
         <div id="player">
             <img id="playerPFP" src="Images/waifuLux.jpg" /><playerName><strong> Reshi</strong></playerName>
@@ -230,7 +239,9 @@
         <hearts>5624 </hearts><img id="heart" src="Images/heart.png"/>
         <img id="clicMe" class="pulse" src="Images/clicMe.png" />
     </div>
-
+    <?php
+        }
+    ?>
 </body>
 
 </html>
