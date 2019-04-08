@@ -1,0 +1,8 @@
+html, body {
+    height: 100%;
+    background-image: url(Images/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;*/
+    overflow-y: hidden;
+}
