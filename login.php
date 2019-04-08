@@ -22,18 +22,15 @@
         session_start();
         // include_once('Statistiques.class.php');
         // $stats = new Statistiques();
-        
-        if (!isset($_SESSION['connecte'])) {
-            //ok on se connecte
-            require "formulaireconnexion.php" ;
-        } else if ((isset($_POST["pseudo"]))&&(isset($_POST["mdp"])))
-        {
+        if (isset($_SESSION['ID'])) {
+            echo "vous etes deja connecté, redirection dans 5 secondes";
+            header('Refresh: 5; URL=index.php');
+        } else if (isset($_POST["pseudo"]) && isset($_POST["mdp"])) {
             //On se connecte à la base de données et on vérifie les informations
             //Si l'authentification est OK, on créé les variables de session ID et pseudo en leur assignant l'id de l'utilisateur et son pseudo
-
+            require "connection.php" ;
             //Sinon, on affiche un message d'erreur suivi du formulaire d'authentification
-            $bdd = new PDO("mysql:host=localhost;dbname=phpesiea", "root", "L0t7vBQTNF94tQCq7J");
-            $req = $bdd->prepare("SELECT ID FROM Utilisateurs WHERE pseudo=:pseudo AND empreinte=:empreinte");
+            $req = $bdd->prepare("SELECT ID FROM utilisateurs WHERE pseudo=:pseudo AND empreinte=:empreinte");
             $req->execute(array(
             "pseudo" => $_POST["pseudo"],
             "empreinte" => hash("sha256", "jaimelesbananes".$_POST["mdp"])
@@ -44,14 +41,15 @@
             if ($donnees) {	
                 $_SESSION['pseudo'] = $_POST["pseudo"];
                 $_SESSION["ID"] = $donnees['ID'];
-                header('Location: index.php');
+                echo "connexion réussite, redirection dans 5 secondes";
+                header('Refresh: 5; URL=index.php');
             }else{
                 echo "mdp incorrect";
                 require "formulaireconnexion.php" ;
             }
         } else {
             //echo hash("sha512", "jaimelesbananes"."supersayan"."jaimelesbananes");
-            header('Location: index.php');
+            require "formulaireconnexion.php";
         }
     ?>
     

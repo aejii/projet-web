@@ -27,7 +27,7 @@
         if ((isset($_SESSION["pseudo"]))&&(isset($_GET["deco"])))
 		{
 			session_destroy();
-			//header('Location: login.php');
+			header('Location: login.php');
         }
         else{
     ?>    

@@ -9,7 +9,7 @@
                         <form role="form"action="login.php" method = "post">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="login" autofocus>
+                                    <input class="form-control" placeholder="Nom d'utilisateur" name="pseudo" autofocus>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Mot de passe" name="mdp" type="password" value="">
