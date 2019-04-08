@@ -9,7 +9,7 @@
     <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
     <link href="dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="style.css" rel="stylesheet">
+    <link href="styleLogin.css" rel="stylesheet">
 
 </head>
 
@@ -35,14 +35,30 @@
             return $ip;
         }
 
-        if ((isset($_SESSION["pseudo"]))&&(isset($_GET["deco"])))
-        {
-            session_destroy();
-            header('Location: index.php');
-        }
-        else if (isset($_SESSION["pseudo"]))
+        if (isset($_SESSION["pseudo"]))
         {	
-            header('Location: index.php');
+            ?>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-4">
+                            <div class="login-panel panel panel-green">
+                                <div class="panel-heading">
+                                    <h3 id="temps2" class="panel-title">Vous etes deja connecté, redirection dans 5 secondes</h3>
+                                    <script>
+                                        window.setTimeout("location=('index.php');",5000);
+                                        var decompte = 5;
+                                        var tmp = setInterval(myTimer, 1000);
+                                        function myTimer() {
+                                            decompte--;
+                                            document.getElementById('temps2').innerHTML = 'Vous etes deja connecté, redirection dans '+decompte+' secondes';
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php
         }
         else
             {
@@ -58,7 +74,7 @@
 
                             $donnees = $req->fetch();
                             if ($donnees) {
-                                echo "désolé votre pseudo existe deja";
+                                $erreur = "désolé votre pseudo existe deja";
                                 require "formulaireinscription.php";
                             }else{
                                 if(!preg_match("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^", $_POST["email"])){
@@ -98,33 +114,51 @@
                                             "email" => $_POST["email"],
                                             "resetmdp" => ""
                                             ));
-
-                                            echo "inscription réussite. redirection dans 5 secondes";
-                                            header('Refresh: 5; URL=login.php');
+                                            ?>
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-4 col-md-offset-4">
+                                                            <div class="login-panel panel panel-green">
+                                                                <div class="panel-heading">
+                                                                    <h3 id="temps2" class="panel-title">Inscription réussite, redirection dans 5 secondes</h3>
+                                                                    <script>
+                                                                        window.setTimeout("location=('login.php');",5000);
+                                                                        var decompte = 5;
+                                                                        var tmp = setInterval(myTimer, 1000);
+                                                                        function myTimer() {
+                                                                            decompte--;
+                                                                            document.getElementById('temps2').innerHTML = 'Inscription réussite, redirection dans '+decompte+' secondes';
+                                                                        }
+                                                                    </script>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php
                                         }else{
-                                            echo "votre mdp doit contenir plus de 6 caractères";
+                                            $erreur = "votre mdp doit contenir plus de 6 caractères";
                                             require "formulaireinscription.php";
                                         }
                                     }else{
-                                        echo "le mot de passe de confirmation est différent";
+                                        $erreur = "le mot de passe de confirmation est différent";
                                         require "formulaireinscription.php";
                                     }
                                 }
                             }
                         }else{
-                            echo "votre pseudo doit contenir seulement des caractères alphanumérique";
+                            $erreur = "votre pseudo doit contenir seulement des caractères alphanumérique";
                             require "formulaireinscription.php";
                         }
                         
                     }else{
-                        echo "votre pseudo doit contenir entre 4 et 100 caractères";
+                        $erreur = "votre pseudo doit contenir entre 4 et 100 caractères";
                         require "formulaireinscription.php";
                     }
                     
                 }else{//inscription normal
                     require "formulaireinscription.php";
                 }
-                
                 //echo hash("sha256", "jaimelesbananes"."pierre");  
             }
     ?>

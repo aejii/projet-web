@@ -26,6 +26,16 @@
 								<input name ="fichier" type ="file" />
                             </div>
                             <input type="submit" class="btn btn-lg btn-success btn-block" value="Valider">
+                            <?php if(isset($erreur)){ ?>
+                                    <p>
+                                        <div class ="panel panel-red">
+                                            <div class ="panel-heading">
+                                                <?php echo $erreur ?>
+                                            </div>
+                                        </div>
+                                    </p>
+                                    
+                                <?php } ?>
                         </fieldset>
                     </form>
                 </div>
