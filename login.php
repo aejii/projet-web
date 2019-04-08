@@ -23,8 +23,28 @@
         // include_once('Statistiques.class.php');
         // $stats = new Statistiques();
         if (isset($_SESSION['ID'])) {
-            echo "vous etes deja connecté, redirection dans 5 secondes";
-            header('Refresh: 5; URL=index.php');
+        ?>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                        <div class="login-panel panel panel-green">
+                            <div class="panel-heading">
+                                <h3 id="temps2" class="panel-title">Vous etes deja connecté, redirection dans 5 secondes</h3>
+                                <script>
+                                    window.setTimeout("location=('index.php');",5000);
+                                    var decompte = 5;
+                                    var tmp = setInterval(myTimer, 1000);
+                                    function myTimer() {
+                                        decompte--;
+                                        document.getElementById('temps2').innerHTML = 'Vous etes deja connecté, redirection dans '+decompte+' secondes';
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php
         } else if (isset($_POST["pseudo"]) && isset($_POST["mdp"])) {
             //On se connecte à la base de données et on vérifie les informations
             //Si l'authentification est OK, on créé les variables de session ID et pseudo en leur assignant l'id de l'utilisateur et son pseudo
@@ -41,10 +61,30 @@
             if ($donnees) {	
                 $_SESSION['pseudo'] = $_POST["pseudo"];
                 $_SESSION["ID"] = $donnees['ID'];
-                echo "connexion réussite, redirection dans 5 secondes";
-                header('Refresh: 5; URL=index.php');
+                ?>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-4">
+                                <div class="login-panel panel panel-green">
+                                    <div class="panel-heading">
+                                        <h3 id="temps" class="panel-title">Connexion réussite, redirection dans 5 secondes</h3>
+                                        <script>
+                                            window.setTimeout("location=('index.php');",5000);
+                                            var decompte = 5;
+                                            var tmp = setInterval(myTimer, 1000);
+                                            function myTimer() {
+                                                decompte--;
+                                                document.getElementById('temps').innerHTML = 'Connexion réussite, redirection dans '+decompte+' secondes';
+                                            }
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
             }else{
-                echo "mdp incorrect";
+                $erreur = "mdp incorrect";
                 require "formulaireconnexion.php" ;
             }
         } else {
@@ -52,7 +92,6 @@
             require "formulaireconnexion.php";
         }
     ?>
-    
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="vendor/metisMenu/metisMenu.min.js"></script>

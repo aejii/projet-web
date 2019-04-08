@@ -15,6 +15,16 @@
                                     <input class="form-control" placeholder="Mot de passe" name="mdp" type="password" value="">
                                 </div>
                                 <input type="submit" class="btn btn-lg btn-success btn-block" value="Valider">
+                                <?php if(isset($erreur)){ ?>
+                                    <p>
+                                        <div class ="panel panel-red">
+                                            <div class ="panel-heading">
+                                                <?php echo $erreur ?>
+                                            </div>
+                                        </div>
+                                    </p>
+                                    
+                                <?php } ?>
                                 <a href="mdpoublier.php" class="active">Mots de passe oublié ?</a>
                                 <div class="form-group">
                                     <a href="inscription.php" class="active">Pas de compte ? S'inscrire</a>
