@@ -36,6 +36,9 @@
                                     </p>
                                     
                                 <?php } ?>
+                            <div class="form-group">
+                                <a href="login.php" class="active">Deja un compte ? Se connecter</a>
+                            </div>
                         </fieldset>
                     </form>
                 </div>
