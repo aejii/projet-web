@@ -1,5 +1,4 @@
 <!-- Navigation -->
-		
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.php">Ae site</a>
                 </div>
