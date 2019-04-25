@@ -33,89 +33,63 @@
     ?>    
     <div id="infos">
         <div id="player">
-            <img id="playerPFP" src="Images/waifuLux.jpg" /><playerName><strong> Reshi</strong></playerName>
+            <img id="playerPFP" src="Images/waifuLux.jpg" /><br/>
+            <playerName><strong> Reshi</strong></playerName>
         </div>
 
         <div id="scores">
-            <score><strong>Click Damage : </strong><br/>Lv159 ~ 48773</score><button type="button" class="btn btn-upgrade"><img id="upgradeArrow" src="Images/upgradeArrow.png" /></button> cost:296k <img id="tinyHeart" src="Images/heart.png"/><br/>
-            <score><strong><abbr title="Your clics will inflict bonus damages, in proportion to total Waifu DPS ">Waifu link</abbr> :</strong><br/>Lv5 ~ 5% </score> <button type="button" class="btn btn-upgrade"><img id="upgradeArrow" src="Images/upgradeArrow.png" /></button> cost:1M <img id="tinyHeart" src="Images/heart.png"/><br/>
-            <score><strong>Total Dps : </strong>2487574</score><br/>
-            <score><strong>Waifu level : </strong>185</score><br/>
-            <score><strong>Waifus unlucked : </strong>6/20</score><br/>
+            <!-- <score><strong>Click Damage : </strong><br/>Lv159 ~ 48773</score><button type="button" class="btn btn-upgrade"><img id="upgradeArrow" src="Images/upgradeArrow.png" /></button> cost:296k <img id="tinyHeart" src="Images/heart.png"/><br/>
+            <score><strong><abbr title="Your clics will inflict bonus damages, in proportion to total Waifu DPS ">Waifu link</abbr> :</strong><br/>Lv5 ~ 5% </score> <button type="button" class="btn btn-upgrade"><img id="upgradeArrow" src="Images/upgradeArrow.png" /></button> cost:1M <img id="tinyHeart" src="Images/heart.png"/><br/> -->
+            <score><strong>Total Dps : </strong>2M 487</score><br/>
+            <score><strong>Total level : </strong>185</score><br/>
+            <score><strong>Upgrades unlucked : </strong>6/20</score><br/>
             <score><strong>Time played : </strong>483h 42m</score><br/>
         </div>
 
-        <div id="achievments">
-            <h1 id="achiTitle">Achievments</h1>
-            <abbr title="First Love ~ You got your first waifu !"><img class="achievment" src="Images/achFirstLove.png" /></abbr>
-            <img class="achievment" src="Images/emptyAchievment.png" />
-            <img class="achievment" src="Images/emptyAchievment.png" />
-            <img class="achievment" src="Images/emptyAchievment.png" />
-            <img class="achievment" src="Images/emptyAchievment.png" />
-            <img class="achievment" src="Images/emptyAchievment.png" />
-            <img class="achievment" src="Images/emptyAchievment.png" />
-            <img class="achievment" src="Images/emptyAchievment.png" />
-            <img class="achievment" src="Images/emptyAchievment.png" />
-            <abbr title="Speedrunner ~ ClickClickClickClickClick 10 CPS"><img class="achievment" src="Images/achSpeedrunner.png" /></abbr>
-            <abbr title="You got the point ;) ~ Keep levelling her, for you own sake."><img class="achievment" src="Images/achGotPoint.png" /></abbr>
-            <abbr title="Studying Hard ~ You did half of the way !"><img class="achievment" src="Images/achStudying.png" /></abbr>
-            <abbr title="Elementalist ~ You reached your maximum powers."><img class="achievment" src="Images/achElementalist.png" /></abbr>
-            <abbr title="TriLuxxy force ~ Lux dealt tons of damages !"><img class="achievment" src="Images/achElementalist.png" /></abbr>
-            <abbr title="100% ~ You got all achievments !"><img class="achievment" src="Images/achElementalist.png" /></abbr>
-            <abbr title="100% ~ You got all achievments !"><img class="secretAchievment" src="Images/achElementalist.png" /></abbr>
+        <div id="achievements">
+            <h1 id="achiTitle">Achievements</h1>
+            <abbr title="First Love ~ You got your first waifu !"><img class="achievement" src="Images/achFirstLove.png" /></abbr>
+            <img class="achievement" src="Images/emptyAchievement.png" />
+            <img class="achievement" src="Images/emptyAchievement.png" />
+            <img class="achievement" src="Images/emptyAchievement.png" />
+            <img class="achievement" src="Images/emptyAchievement.png" />
+            <img class="achievement" src="Images/emptyAchievement.png" />
+            <img class="achievement" src="Images/emptyAchievement.png" />
+            <img class="achievement" src="Images/emptyAchievement.png" />
+            <img class="achievement" src="Images/emptyAchievement.png" />
+            <abbr title="Speedrunner ~ ClickClickClickClickClick 10 CPS"><img class="achievement" src="Images/achSpeedrunner.png" /></abbr>
+            <abbr title="You got the point ;) ~ Keep levelling her, for you own sake."><img class="achievement" src="Images/achGotPoint.png" /></abbr>
+            <abbr title="Studying Hard ~ You did half of the way !"><img class="achievement" src="Images/achStudying.png" /></abbr>
+            <abbr title="Elementalist ~ You reached your maximum powers."><img class="achievement" src="Images/achElementalist.png" /></abbr>
+            <abbr title="TriLuxxy force ~ Lux dealt tons of damages !"><img class="achievement" src="Images/achTriforce.png" /></abbr>
+            <abbr title="100% ~ You got all achievements !"><img class="achievement" src="Images/ach100.png" /></abbr>
+            <abbr title="100% ~ You got all achievements !"><img class="secretAchievement" src="Images/achElementalist.png" /></abbr>
+            <img class="achievement" src="Images/emptyAchievement.png" />
+            <img class="achievement" src="Images/emptyAchievement.png" />
+            <img class="achievement" src="Images/emptyAchievement.png" />
+            <img class="achievement" src="Images/emptyAchievement.png" />
+            <img class="achievement" src="Images/emptyAchievement.png" />
 
         </div>
     
     </div>
 
     <div id="waifusPannel">
-        <nav>
-                <div class="panel-body">
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs">
-                            <li class=""><a href="#home" data-toggle="tab" aria-expanded="false">Home</a>
-                            </li>
-                            <li class="active"><a href="#profile" data-toggle="tab" aria-expanded="true">Profile</a>
-                            </li>
-                            <li class=""><a href="#messages" data-toggle="tab" aria-expanded="false">Messages</a>
-                            </li>
-                            <li class=""><a href="#settings" data-toggle="tab" aria-expanded="false">Settings</a>
-                            </li>
-                        </ul>
+        
+        <ul id="upgradeOnglets">
+                <li class="uplio"><a href="#"><img class="ongletWaifuI" src="Images/logoRond.png" /></a></li>
+                <li class="uplio"><a href="#"><img class="ongletWaifuI" src="Images/elemSymbol.png" /></a></li>          
+                <li class="uplio"><a href="#"><img class="ongletWaifuI" src="Images/researchLabSymbol.png" /></a></li>
+        </ul>
 
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane fade" id="home">
-                                <h4>Home Tab</h4>
-                                <p>The Goddess, Auras</p>
-                            </div>
-                            <div class="tab-pane fade active in" id="profile">
-                                <h4>Profile Tab</h4>
-                                <p>Waifus</p>
-                            </div>
-                            <div class="tab-pane fade" id="messages">
-                                <h4>Messages Tab</h4>
-                                <p>Trainer,Link,Spell Factory</p>
-                            </div>
-                        </div>
-                    </div>
-
-            <ul id="upgradeOnglets">
-                <li class="uplio"><a href="main.html">Luxanna</a></li>          
-                <li class="uplio"><a href="profile.html">Waifus</a></li>
-                <li class="uplio"><a href="main.html">Research lab</a></li>
-            </ul>
-        </nav>
-        <div id="waifu">
-            <img class="waifuImage" src="Images/waifuLux.jpg" /><waifuName> Luxanna </waifuName><waifuLevel>Lv.1</waifuLevel><br/>
-            <damages>DPS: 0 (Next +10)</damages><br/>
-            <button type="button" class="btn btn-lvlup">LEVEL UP !</button> Cost : 1019 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-        </div>
         <br/>   
            <h1 id="waifuT">Waifus</h1>
            <div id="waifu">
                <img class="waifuImage" src="Images/waifuMegumi.png" /><waifuName> Megumi Kato </waifuName><waifuLevel>Lv.1</waifuLevel><br/>
-               <damages>DPS: 0 (Next +1)</damages><br/>
+               <div class="meter">
+                <span style="width: 25%"></span>
+                </div>
+                <damages>DPS: 0 (Next +1)</damages><br/>
                <button type="button" class="btn btn-lvlup">LEVEL UP !</button> Cost : 100 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
            </div>
            <br/>
@@ -233,6 +207,80 @@
                 <button type="button" class="btn btn-lvlup">LEVEL UP !</button> Cost : 99T 999 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
             </div>
             <br/>
+
+            
+        <h1 id="waifuT">Elementalist</h1>
+        <div id="elem">
+            <img class="elemImage" src="Images/LightLux.png" /><br/>
+            <waifuName> Luxanna </waifuName><waifuLevel>Lv.1</waifuLevel><br/>
+            <damages>DPS: 0 (Next +10)</damages><br/>
+            <button type="button" class="btn btn-lvlup">LEVEL UP !</button> Cost : 1019 <img id="tinyHeart" src="Images/heart.png"/>
+        </div>
+
+        <br/>
+        <div id="aura">
+            <img class="waifuImage" src="Images/iconNature.png" /><waifuName> Nature Aura : Harvest </waifuName><br/>
+            <damages>Effect : Boost all your total DPS by 5%</damages><br/>
+            <button type="button" class="btn btn-lvlup">Unlock</button> <button type="button" class="btn btn-lvlup">Choose this aura</button>
+        </div>
+        <br/>
+        <div id="aura">
+            <img class="waifuImage" src="Images/iconWater.png" /><waifuName> Water Aura :  </waifuName><br/>
+            <damages>Effect : </damages><br/>
+            <button type="button" class="btn btn-lvlup">Unlock</button> <button type="button" class="btn btn-lvlup">Choose this aura</button>
+        </div>
+        <br/>
+        <div id="aura">
+            <img class="waifuImage" src="Images/iconAir.png" /><waifuName> Air Aura :  </waifuName><br/>
+            <damages>Effect : </damages><br/>
+            <button type="button" class="btn btn-lvlup">Unlock</button> <button type="button" class="btn btn-lvlup">Choose this aura</button>
+        </div>
+        <br/>
+        <div id="aura">
+            <img class="waifuImage" src="Images/iconFire.png" /><waifuName> Fire Aura : Punch </waifuName><br/>
+            <damages>Effect : Boost your click damages by 15%</damages><br/>
+            <button type="button" class="btn btn-lvlup">Unlock</button> <button type="button" class="btn btn-lvlup">Choose this aura</button>
+        </div>
+        <br/>
+        <div id="aura">
+            <img class="waifuImage" src="Images/iconMystic.png" /><waifuName> Mystic Aura : Spell Brewer </waifuName><br/>
+            <damages>Effect : Your spell factory produces spells 20% faster and their effects are 20% longer</damages><br/>
+            <button type="button" class="btn btn-lvlup">Unlock</button> <button type="button" class="btn btn-lvlup">Choose this aura</button>
+        </div>
+        <br/>
+        <div id="aura">
+            <img class="waifuImage" src="Images/iconStorm.png" /><waifuName> Storm Aura : Lightning Bolt </waifuName><br/>
+            <damages>Effect : If you click more than 10 times per seconds, one more click is generated every 2 clicks</damages><br/>
+            <button type="button" class="btn btn-lvlup">Unlock</button> <button type="button" class="btn btn-lvlup">Choose this aura</button>
+        </div>
+        <br/>
+        <div id="aura">
+            <img class="waifuImage" src="Images/iconIce.png" /><waifuName> Ice Aura : </waifuName><br/>
+            <damages>Effect :</damages><br/>
+            <button type="button" class="btn btn-lvlup">Unlock</button> <button type="button" class="btn btn-lvlup">Choose this aura</button>
+        </div>
+        <br/>
+        <div id="aura">
+            <img class="waifuImage" src="Images/iconMagma.png" /><waifuName> Magma Aura : Fury </waifuName><br/>
+            <damages>Effect : When you don't click, generate Fury which will greatly increase Next click damage</damages><br/>
+            <button type="button" class="btn btn-lvlup">Unlock</button> <button type="button" class="btn btn-lvlup">Choose this aura</button>
+        </div>
+        <br/>
+        <div id="aura">
+            <img class="waifuImage" src="Images/iconLight.png" /><waifuName> True Light Aura : Prism </waifuName><br/>
+            <damages>Effect : You can now chose 2 auras at once</damages><br/>
+            <button type="button" class="btn btn-lvlup">Unlock</button> 
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
     </div>
 
     <div id="center">

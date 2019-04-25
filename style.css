@@ -1,15 +1,14 @@
 html, body {
     height: 100%;
-    background-color: grey;
-    /*background-image: url(Images/ElemLux.jpg);
+    background-image: url(Images/bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;*/
+    background-attachment: fixed;
     overflow-y: hidden;
 }
 
 header {
-    width: 100%; 
+    width: inherit;
     background-color: white;
     color: gold;
     font-family: Constantia;
@@ -19,12 +18,15 @@ header {
 titleSite {
     font-size: 4em;
     font-family: 'David Libre';
+    position: relative;
+    bottom: 10px;
 }
 
 #Ibanniere{
+    margin-top: 1%;
+    margin-left: 1%;
     width:70px;
     height:70px;
-    top:2.1%;
 }
 
 #onglets {
@@ -72,8 +74,9 @@ color:#ffda4b
     border-top-left-radius :10 px;
     border-bottom-left-radius :10 px;
     width :20%;
-    height: 85%;
+    height: inherit;
     flex-direction: column;
+    overflow-y: scroll;
 }
 
 #player {
@@ -110,18 +113,18 @@ score {
     font-size:1.5em;
 }
 
-#achievments {
+#achievements {
     text-align: center;
     padding-left: 5%;
     padding-right: 5%;
 }
 
-.achievment {
+.achievement {
     height: 18%;
     width: 18%;
 }
 
-.secretAchievment {
+.secretAchievement {
     height: 18%;
     width: 18%;
     display:none;
@@ -144,7 +147,7 @@ score {
     border-top-left-radius :10 px;
     border-bottom-left-radius :10 px;
     width :20%;
-    height: 85%;
+    height: inherit;
     flex-direction: column;
     text-align: center;
     overflow-y: scroll;
@@ -152,17 +155,23 @@ score {
 
 #upgradeOnglets {
     list-style-type: none;
-    margin: 0;
+    margin: auto;
     padding: 0;
     overflow: hidden;
     background-color:rgb(0, 102, 255);
+    width: fit-content;
+    
+}
+
+.ongletWaifuI {
+    height: 40px;
+    width: 40px;
 }
 
 .uplio {
     float: left;
     border-right: 1px solid #bbb;
 }
-
 
 .uplio:last-child{
     border-right:none;
@@ -188,11 +197,15 @@ color:rgb(0, 102, 255)
     background-color: orange;
     width: 80%;
     margin: 0 auto 0 auto;
+    border-radius: 10px;
 }
+
+
 
 .waifuImage {
     height: 60px;
     width: 60px;
+    border-radius: 10px;
 }
 
 waifuName {
@@ -219,7 +232,6 @@ waifuName {
     background-image: none;
     border: 1px solid transparent;
     border-radius: 4px;
-    
     color: #fff;
     background-color: #337ab7;
     border-color: #2e6da4;
@@ -245,6 +257,28 @@ waifuName {
     width: 20px;
 }
 
+
+/* LUX */
+
+#elem {
+    background-color: orange;
+    width: 80%;
+    margin: 0 auto 0 auto;
+    border-radius: 10px;
+}
+
+.elemImage {
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+}
+
+#aura {
+    background-color: gold;
+    width: 80%;
+    margin: 0 auto 0 auto;
+    border-radius: 10px;
+}
 
 /* CENTER */
 
@@ -312,4 +346,57 @@ hearts {
 
 
 
-    
+    progress{
+        display: inline-block;
+        -moz-box-sizing: border-box;
+             box-sizing: border-box;
+        width: 300px;
+        height: 20px;
+        padding: 3px 3px 2px 3px;
+        background: #333; 
+        background: -webkit-linear-gradient(#2d2d2d,#444);
+        background:    -moz-linear-gradient(#2d2d2d,#444);
+        background:      -o-linear-gradient(#2d2d2d,#444);
+        background:         linear-gradient(#2d2d2d,#444);
+        border: 1px solid rgba(0,0,0,.5);
+        border-radius: 15px;
+        box-shadow: 0 1px 0 rgba(255,255,255,.2);   
+        
+    }
+
+    progress::-webkit-progress-bar{
+        background: transparent;
+        
+    }
+
+
+    .meter { 
+        height: 10px;  /* Can be anything */
+        position: relative;
+        background: #666;
+        -moz-border-radius: 25px;
+        -webkit-border-radius: 25px;
+        border-radius: 25px;
+        padding: 5px;
+        box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
+    }
+
+    .meter > span {
+        display: block;
+        height: 100%;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        background-color: rgb(226, 41, 87);
+        background-image: linear-gradient(
+          center bottom,
+          rgb(163, 33, 131) 30%,
+          rgb(226, 41, 87) 75%
+        );
+        box-shadow: 
+          inset 0 2px px  rgba(255,255,255,0.3),
+          inset 0 -2px 6px rgba(0,0,0,0.4);
+        position: relative;
+        overflow: hidden;
+      }
