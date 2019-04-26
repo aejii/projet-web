@@ -78,7 +78,8 @@
                                 require "formulaireinscription.php";
                             }else{
                                 if(!preg_match("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$^", $_POST["email"])){
-                                    echo "erreur email invalide";
+                                    $erreur = "Email invalide";
+                                require "formulaireinscription.php";
                                 }else{
                                     //mddp et confirmation mdp equal
                                     if ($_POST["mdp"] == $_POST["cmdp"]) {
