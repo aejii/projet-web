@@ -90,8 +90,8 @@
         </ul>
         <br/>
         <div id="upgrades1" class="tab-pane fade in active">
-           <h1 id="waifuT">Waifus</h1>
-           <div id="waifu">
+           <h1  class="waifuT">Waifus</h1>
+           <div id="autoclick1" id="autoclick" class="waifu">
                <img class="waifuImage" src="Images/AYAYA.png" /><div class="waifuName"> Karen Kujo </div><div class="waifuLevel">Lv.1</div><br/>
                <div class="meter">
                 <span style="width: 25%"></span>
@@ -100,115 +100,115 @@
                <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 100 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
            </div>
            <br/>
-           <div id="waifu">
+           <div id="autoclick2" class="waifu">
                <img class="waifuImage" src="Images/waifuKaori.png" /><div class="waifuName"> Kaori Miyazono </div><div class="waifuLevel">Lv.1</div>
                <div class="damages">DPS: 0 (Suivant : +100)</div>
                <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 700 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
            </div>
            <br/>
-           <div id="waifu">
+           <div id="autoclick3" class="waifu">
                <img class="waifuImage" src="Images/waifuNakano.png" /><div class="waifuName"> Nakano Miku </div><div class="waifuLevel">Lv.1</div>
                <div class="damages">DPS: 0 (Suivant : +500)</div>
                <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 2000 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
            </div>
            <br/>
-           <div id="waifu">
+           <div id="autoclick4" class="waifu">
                <img class="waifuImage" src="Images/waifuErina.png" /><div class="waifuName"> Erina </div><div class="waifuLevel">Lv.1</div>
                <div class="damages">DPS: 0 (Suivant : +1000)</div>
                <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 10k <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
            </div>
            <br/>
-           <div id="waifu">
+           <div id="autoclick5" class="waifu">
                <img class="waifuImage" src="Images/waifuChitoge.png" /><div class="waifuName"> Chitoge Kirisaki </div><div class="waifuLevel">Lv.1</div> 
                <div class="damages">DPS: 0 (Suivant : +5000)</div> 
                <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 40k <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
            </div>
            <br/>
-           <div id="waifu">
+           <div id="autoclick6" class="waifu">
                <img class="waifuImage" src="Images/waifuHikayu.jpg" /><div class="waifuName"> Hikayu </div><div class="waifuLevel">Lv.1</div> 
                <div class="damages">DPS: 0 (Suivant : +15k)</div> 
                <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 150k <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
            </div>
            <br/>
-           <div id="waifu">
+           <div id="autoclick7" class="waifu">
                 <img class="waifuImage" src="Images/waifuTsugumi.png" /><div class="waifuName"> Tsugumi </div><div class="waifuLevel">Lv.1</div> 
                 <div class="damages">DPS: 0 (Suivant : +50k)</div> 
                 <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 550k <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
             </div>
             <br/>
-            <div id="waifu">
+            <div id="autoclick8" class="waifu">
                 <img class="waifuImage" src="Images/waifuFjorm.png" /><div class="waifuName"> Fjorm </div><div class="waifuLevel">Lv.1</div> 
                 <div class="damages">DPS: 0 (Suivant : +250k)</div> 
                 <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 1M 1 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
             </div>
             <br/>
-            <div id="waifu">
+            <div id="autoclick9" class="waifu">
                 <img class="waifuImage" src="Images/waifuAsuna.png" /><div class="waifuName"> Asuna </div><div class="waifuLevel">Lv.1</div> 
                 <div class="damages">DPS: 0 (Suivant : +1M)</div> 
                 <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 3M 4 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
             </div>
             <br/>
-            <div id="waifu">
+            <div id="autoclick10" class="waifu">
                 <img class="waifuImage" src="Images/waifuAlice.png" /><div class="waifuName"> Alice </div><div class="waifuLevel">Lv.1</div> 
                 <div class="damages">DPS: 0 (Suivant : +3M)</div> 
                 <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 10M <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
             </div>
             <br/>
-            <div id="waifu">
+            <div id="autoclick11" class="waifu">
                <img class="waifuImage" src="Images/waifuLyn.png" /><div class="waifuName"> Lyn </div><div class="waifuLevel">Lv.1</div> 
                <div class="damages">DPS: 0 (Suivant : +10M)</div> 
                <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 42M <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
            </div>
            <br/>
-            <div id="waifu">
+            <div id="autoclick12" class="waifu">
                 <img class="waifuImage" src="Images/waifuCynthia1.png" /><div class="waifuName"> Cynthia </div><div class="waifuLevel">Lv.1</div> 
                 <div class="damages">DPS: 0 (Suivant : +100M)</div> 
                 <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 153M <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
             </div>
             <br/>
-            <div id="waifu">
+            <div id="autoclick13" class="waifu">
                 <img class="waifuImage" src="Images/waifuHomura.png" /><div class="waifuName"> Homura Akemi </div><div class="waifuLevel">Lv.1</div> 
                 <div class="damages">DPS: 0 (Suivant : +1B)</div> 
                 <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 800M <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
             </div>
             <br/>
-            <div id="waifu">
+            <div id="autoclick14" class="waifu">
                 <img class="waifuImage" src="Images/waifuRemRam.png" /><div class="waifuName"> Rem&Ram </div><div class="waifuLevel">Lv.1</div> 
                 <div class="damages">DPS: 0 (Suivant : +1B)</div> 
                 <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 3B <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
             </div>
             <br/>
-            <div id="waifu">
+            <div id="autoclick15" class="waifu">
                 <img class="waifuImage" src="Images/waifuFuwa.png" /><div class="waifuName"> Fuwa Aika </div><div class="waifuLevel">Lv.1</div> 
                 <div class="damages">DPS: 0 (Suivant : +50M)</div> 
                 <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 25B <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
             </div>
             <br/>
-            <div id="waifu">
+            <div id="autoclick16" class="waifu">
                 <img class="waifuImage" src="Images/waifuTheresia.png" /><div class="waifuName"> Theresia Van Astrea </div><div class="waifuLevel">Lv.1</div> 
                 <div class="damages">DPS: 0 (Suivant : +1B)</div> 
                 <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 100B <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
             </div>
             <br/>
-            <div id="waifu">
+            <div id="autoclick17" class="waifu">
                 <img class="waifuImage" src="Images/waifuYurika.png" /><div class="waifuName"> Yurika Nijino </div><div class="waifuLevel">Lv.1</div> 
                 <div class="damages">DPS: 0 (Suivant : +1B)</div> 
                 <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 777B <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
             </div>
             <br/>
-            <div id="waifu">
+            <div id="autoclick18" class="waifu">
                 <img class="waifuImage" src="Images/waifuEmilia.png" /><div class="waifuName"> Emilia </div><div class="waifuLevel">Lv.1</div> 
                 <div class="damages">DPS: 0 (Suivant : +1B)</div> 
                 <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 6T <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
             </div>
             <br/>
-            <div id="waifu">
+            <div id="autoclick19" class="waifu">
                 <img class="waifuImage" src="Images/waifuTohru.png" /><div class="waifuName"> Tohru </div><div class="waifuLevel">Lv.1</div> 
                 <div class="damages">DPS: 0 (Suivant : +1B)</div> 
                 <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 34T 5 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
             </div>
             <br/>
-            <div id="waifu">
+            <div id="autoclick20" class="waifu">
                 <img class="waifuImage" src="Images/waifuMegumin.png" /><div class="waifuName"> Megumin </div><div class="waifuLevel">Lv.1</div> 
                 <div class="damages">DPS: 0 (Suivant : +1B)</div> 
                 <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 99T 999 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
@@ -228,55 +228,55 @@
             <br/>
             <h2 id="waifuT">Auras</h2>
 
-            <div id="aura">
+            <div class="aura">
                 <img class="waifuImage" src="Images/iconNature.png" /><div class="waifuName"> Aura naturelle : Récolte </div><br/>
                 Effet : Augmente toutes les sources de dégats de 5%<br/>
                 <button type="button" class="btn btn-lvlup">Débloquer</button> <button type="button" class="btn btn-lvlup">Choisir cette aura</button>
             </div>
             <br/>
-            <div id="aura">
+            <div class="aura">
                 <img class="waifuImage" src="Images/iconWater.png" /><div class="waifuName"> Aura d'eau :  </div><br/>
                 Effet : <br/>
                 <button type="button" class="btn btn-lvlup">Débloquer</button> <button type="button" class="btn btn-lvlup">Choisir cette aura</button>
             </div>
             <br/>
-            <div id="aura">
+            <div class="aura">
                 <img class="waifuImage" src="Images/iconAir.png" /><div class="waifuName"> Aura de vent :  </div><br/>
                 Effet : <br/>
                 <button type="button" class="btn btn-lvlup">Débloquer</button> <button type="button" class="btn btn-lvlup">Choisir cette aura</button>
             </div>
             <br/>
-            <div id="aura">
+            <div class="aura">
                 <img class="waifuImage" src="Images/iconFire.png" /><div class="waifuName"> Aura de feu : Poings </div><br/>
                 Effet : Augmente les dégats de clics de 15%<br/>
                 <button type="button" class="btn btn-lvlup">Débloquer</button> <button type="button" class="btn btn-lvlup">Choisir cette aura</button>
             </div>
             <br/>
-            <div id="aura">
+            <div class="aura">
                 <img class="waifuImage" src="Images/iconMystic.png" /><div class="waifuName"> Aura mystique : </div><br/>
                 Effet : <br/>
                 <button type="button" class="btn btn-lvlup">Débloquer</button> <button type="button" class="btn btn-lvlup">Choisir cette aura</button>
             </div>
             <br/>
-            <div id="aura">
+            <div class="aura">
                 <img class="waifuImage" src="Images/iconStorm.png" /><div class="waifuName"> Aura de foudre : Chaîne d'éclairs </div><br/>
                 Effet : <br/>
                 <button type="button" class="btn btn-lvlup">Débloquer</button> <button type="button" class="btn btn-lvlup">Choisir cette aura</button>
             </div>
             <br/>
-            <div id="aura">
+            <div class="aura">
                 <img class="waifuImage" src="Images/iconIce.png" /><div class="waifuName"> Aura givrante : </div><br/>
                 Effet :<br/>
                 <button type="button" class="btn btn-lvlup">Débloquer</button> <button type="button" class="btn btn-lvlup">Choisir cette aura</button>
             </div>
             <br/>
-            <div id="aura">
+            <div class="aura">
                 <img class="waifuImage" src="Images/iconMagma.png" /><div class="waifuName"> Aura de magma : Furie </div><br/>
                 Effet : En l'abscence de clic, stock de la furie augmentant énormément les dégats d'un prochain clic<br/>
                 <button type="button" class="btn btn-lvlup">Débloquer</button> <button type="button" class="btn btn-lvlup">Choisir cette aura</button>
             </div>
             <br/>
-            <div id="aura">
+            <div class="aura">
                 <img class="waifuImage" src="Images/iconLight.png" /><div class="waifuName"> True Light Aura : Prism </div><br/>
                 Effet : Vous pouvez choisir 2 auras simultanément<br/>
                 <button type="button" class="btn btn-lvlup">Débloquer</button> 
@@ -284,8 +284,12 @@
         </div>
 
         <div id="upgrades3" class="tab-pane fade">    
-            <h1 id="waifuT">Research Lab</h1>
-            wip
+            <h1 id="waifuT">Laboratoire de recherche</h1>
+            <div class="research">
+                <img class="waifuImage" src="Images/iconLight.png" /><div class="waifuName"> True Light Aura : Prism </div><br/>
+                Effet : Vous pouvez choisir 2 auras simultanément<br/>
+                <button type="button" class="btn btn-lvlup">Débloquer</button> 
+            </div>
         </div>
         <br/>
 
