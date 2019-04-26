@@ -286,8 +286,8 @@
     </div>
 
     <div id="center">
-        <span class="hearts" id="score">0 </span><img id="heart" src="Images/heart.png"/>
-        <img id="clicMe" class="pulse" src="Images/clicMe.png" onclick="click()" />
+        <span class="hearts" id="score">0</span><img id="heart" src="Images/heart.png"/>
+        <img id="clicMe" class="pulse" src="Images/clicMe.png" onclick="hit()" />
     </div>
     <?php
         }

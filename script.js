@@ -14,11 +14,11 @@ function update()
 
 
 /*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-| click: Increase the score by 1 when the player clicks on the main button	|
+| hit: Increase the score by 1 when the player clicks on the main button	|
 |																			|
 | returns: void																|
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
-function click()
+function hit()
 {
 	++score;
 	update();
