@@ -24,28 +24,9 @@
         // $stats = new Statistiques();
 
         if (isset($_SESSION['ID'])) {// on vérifie si l'utilisateur est connecté, si oui on le redirige
-            ?>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-md-offset-4">
-                        <div class="login-panel panel panel-green">
-                            <div class="panel-heading">
-                                <h3 id="temps2" class="panel-title">Vous etes deja connecté, redirection dans 5 secondes</h3>
-                                <script>
-                                    window.setTimeout("location=('index.php');",5000);
-                                    var decompte = 5;
-                                    var tmp = setInterval(myTimer, 1000);
-                                    function myTimer() {
-                                        decompte--;
-                                        document.getElementById('temps2').innerHTML = 'Vous etes deja connecté, redirection dans '+decompte+' secondes';
-                                    }
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <?php
+            $titre = "Vous etes deja connecté, redirection dans 5 secondes";
+            $form = 6;
+            require "trucentrer.php";
         } else if (isset($_POST["email"]) && !isset($_POST["mdp"]) && !isset($_POST["cmdp"])){// on simule l'envoi de l'email
             require "connection.php";
             // on vérifie que l'email existe
@@ -65,111 +46,60 @@
                     "email" => $_POST["email"]
                 ));
                 // on affiche le lien comme si c'était dans l'email
-                ?>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 col-md-offset-4">
-                            <div class="login-panel panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Modifier votre mdp (ceci est un email)</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <a href="mdpoublier.php?reset=<?php echo $hash; ?>" class="active">Ceci est le lien pour réinitialiser votre mdp</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php
+                $titre = "Modifier votre mdp (ceci est un email)";
+                $form = 5;
+                require "trucentrer.php";
             } else {
-                ?>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-4 col-md-offset-4">
-                                <div class="login-panel panel panel-green">
-                                    <div class="panel-heading">
-                                        <h3 id="temps2" class="panel-title">Email introuvable</h3>
-                                        <a href="inscription.php" class="active">Pas de compte ? S'inscrire</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php
-            }
-        } else if(isset($_GET["reset"])){//ici on entre le nouveau mdp
-            ?>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-md-offset-4">
-                        <div class="login-panel panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Entrez votre nouveau mot de passe</h3>
-                            </div>
-                            <div class="panel-body">
-                                <form role="form"action="mdpoublier.php" method = "post">
-                                    <fieldset>
-                                    <input type="hidden" name="hash" value="<?php echo $_GET["reset"] ?>" />
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Nouveau mot de passe" name="mdp" type="password" value="">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Confirmer nouveau mot de passe" name="cmdp" type="password" value="">
-                                    </div>
-                                    <input type="submit" class="btn btn-lg btn-success btn-block" value="Valider">
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <?php
-        } else if (isset($_POST["hash"]) && isset($_POST["mdp"]) && isset($_POST["cmdp"])) {// ici on modifie le mdp (puis on redirige vers login)
-            require "connection.php";
-            $req = $bdd->prepare("SELECT resetmdp FROM utilisateurs WHERE resetmdp=:resetmdp");
-            $req->execute(array(
-            "resetmdp" => $_POST["hash"]
-            ));
-
-            // si on trouve le hash alors on modifie le mdp
-            $donnees = $req->fetch();
-            // email existant
-            if ($donnees) {
-                $req = $bdd->prepare("UPDATE utilisateurs SET empreinte=:empreinte , resetmdp=:newresetmdp  WHERE resetmdp=:resetmdp");
-                $req->execute(array(
-                    "empreinte" => hash("sha256", "jaimelesbananes".$_POST["mdp"]),
-                    "resetmdp" => $_POST["hash"],
-                    "newresetmdp" => ""
-                ));
-                ?>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 col-md-offset-4">
-                            <div class="login-panel panel panel-green">
-                                <div class="panel-heading">
-                                    <h3 id="temps2" class="panel-title">Mot de passe modifié avec succès, redirection dans 5 secondes</h3>
-                                    <script>
-                                        window.setTimeout("location=('login.php');",5000);
-                                        var decompte = 5;
-                                        var tmp = setInterval(myTimer, 1000);
-                                        function myTimer() {
-                                            decompte--;
-                                            document.getElementById('temps2').innerHTML = 'Mot de passe modifié avec succès, redirection dans '+decompte+' secondes';
-                                        }
-                                    </script>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php
-            }else{
-                $titre = "Demande modification mot de passe introuvable";
-                $form = 1;
+                $titre = "Email introuvable";
+                $form = 4;
                 require "trucentrer.php";
             }
-            
+        } else if(isset($_GET["reset"])){//ici on entre le nouveau mdp
+            $titre = "Entrez votre nouveau mot de passe";
+            $form = 3;
+            require "trucentrer.php";
+        } else if (isset($_POST["hash"]) && isset($_POST["mdp"]) && isset($_POST["cmdp"])) {// ici on modifie le mdp (puis on redirige vers login)
+            require "connection.php";
+
+            // on vérifie taille > 8 et mdp == cmdp
+            if ($_POST["mdp"] == $_POST["cmdp"]) {
+                if (strlen($_POST["mdp"])>=8) {
+                    // si on trouve le hash alors on modifie le mdp
+                    $req = $bdd->prepare("SELECT resetmdp FROM utilisateurs WHERE resetmdp=:resetmdp");
+                    $req->execute(array(
+                        "resetmdp" => $_POST["hash"]
+                    ));
+                    $donnees = $req->fetch();
+                    // email existant
+                    if ($donnees) {
+                        $req = $bdd->prepare("UPDATE utilisateurs SET empreinte=:empreinte , resetmdp=:newresetmdp  WHERE resetmdp=:resetmdp");
+                        $req->execute(array(
+                            "empreinte" => hash("sha256", "jaimelesbananes".$_POST["mdp"]),
+                            "resetmdp" => $_POST["hash"],
+                            "newresetmdp" => ""
+                        ));
+                        $titre = "Mot de passe modifié avec succès, redirection dans 5 secondes";
+                        $form = 2;
+                        require "trucentrer.php";
+                    }else{
+                        $titre = "Demande modification mot de passe introuvable";
+                        $form = 1;
+                        require "trucentrer.php";
+                    }
+                }else{// mdp pas assez long
+                    $_GET["reset"] = $_POST["hash"];
+                    $titre = "Entrez votre nouveau mot de passe";
+                    $form = 3;
+                    $erreur = "votre mdp doit contenir plus de 6 caractères";
+                    require "trucentrer.php";
+                }
+            }else{//mdp de confirmation différent
+                $_GET["reset"] = $_POST["hash"];
+                $erreur = "le mot de passe de confirmation est différent";
+                $titre = "Entrez votre nouveau mot de passe";
+                $form = 3;
+                require "trucentrer.php";
+            }
         } else { // sinon on demande le mail pour envoyé un lien unique de reset
             $titre = "Modifier votre mdp";
             $form = 0;
