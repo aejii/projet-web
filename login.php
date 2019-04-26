@@ -40,6 +40,9 @@
                                     }
                                 </script>
                             </div>
+                            <div class="panel-body">
+                                <a href="index.php" class="active">Lien manuel</a>
+                            </div>
                         </div>
                     </div>
                 </div>
