@@ -74,9 +74,10 @@ color:#ffda4b
     border-top-left-radius :10 px;
     border-bottom-left-radius :10 px;
     width :20%;
-    height: inherit;
+    height: 85%;
     flex-direction: column;
     overflow-y: scroll;
+
 }
 
 #player {
@@ -147,7 +148,7 @@ color:#ffda4b
     border-top-left-radius :10 px;
     border-bottom-left-radius :10 px;
     width :20%;
-    height: inherit;
+    height: 85%;
     flex-direction: column;
     text-align: center;
     overflow-y: scroll;

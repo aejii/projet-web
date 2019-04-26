@@ -13,8 +13,7 @@
 
 <header>
     <div id="banniere" style="z-index: -1">
-        <img id="Ibanniere" src="Images/logoRond.png" />
-        <strong><div class="titleSite">WaifuClicker</div></strong>
+        <strong><div class="titleSite"><img id="Ibanniere" src="Images/logoRond.png" />WaifuClicker</div></strong>
     </div>
     <nav>
         <ul id="onglets">
@@ -72,7 +71,8 @@
             <img class="achievement" src="Images/emptyAchievement.png" />
 
         </div>
-    
+        <br/>
+
     </div>
 
     <div id="upgradePannel">
@@ -82,7 +82,7 @@
                 <li class="uplio"><a href="#"><img class="ongletWaifuI" src="Images/elemSymbol.png" /></a></li>          
                 <li class="uplio"><a href="#"><img class="ongletWaifuI" src="Images/researchLabSymbol.png" /></a></li>
         </ul>
-        <br/>   
+        <br/>
         <div id="upgrades1" class="tab-pane fade in active">
            <h1 id="waifuT">Waifus</h1>
            <div id="waifu">
@@ -210,7 +210,7 @@
             <br/>
         </div>
 
-        <div id="upgrades2" class="tab-pane fade in active">    
+        <div id="upgrades2" class="tab-pane fade">    
             <h1 id="waifuT">Elementalist</h1>
             <div id="elem">
                 <img class="elemImage" src="Images/LightLux.png" /><br/>
@@ -220,6 +220,8 @@
             </div>
 
             <br/>
+            <h2 id="waifuT">Auras</h2>
+
             <div id="aura">
                 <img class="waifuImage" src="Images/iconNature.png" /><div class="waifuName"> Nature Aura : Harvest </div><br/>
                 Effect : Boost all your total DPS by 5%<br/>
@@ -274,20 +276,17 @@
                 <button type="button" class="btn btn-lvlup">Unlock</button> 
             </div>
         </div>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+
+        <div id="upgrades3" class="tab-pane fade">    
+            <h1 id="waifuT">Research Lab</h1>
+            wip
+        </div>
         <br/>
 
     </div>
 
     <div id="center">
-        <div class="hearts" id="score">0 <img id="heart" src="Images/heart.png"/></div>
+        <span class="hearts" id="score">0 </span><img id="heart" src="Images/heart.png"/>
         <img id="clicMe" class="pulse" src="Images/clicMe.png" onclick="click()" />
     </div>
     <?php
