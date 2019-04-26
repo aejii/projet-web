@@ -8,6 +8,7 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="style.css" />
     <title>WaifuClicker</title>
+	<script type="text/javascript" src="script.js" ></script>
 </head>
 
 <header>
@@ -286,8 +287,8 @@
     </div>
 
     <div id="center">
-        <div class="hearts">0 <img id="heart" src="Images/heart.png"/></div>
-        <img id="clicMe" class="pulse" src="Images/clicMe.png" />
+        <div class="hearts" id="score">0 <img id="heart" src="Images/heart.png"/></div>
+        <img id="clicMe" class="pulse" src="Images/clicMe.png" onclick="click()" />
     </div>
     <?php
         }

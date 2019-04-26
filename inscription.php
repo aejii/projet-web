@@ -82,7 +82,7 @@
                                 }else{
                                     //mddp et confirmation mdp equal
                                     if ($_POST["mdp"] == $_POST["cmdp"]) {
-                                        if (strlen($_POST["mdp"])>=2) {//6
+                                        if (strlen($_POST["mdp"])>=8) {
                                             
                                             $chemin = __DIR__."/Images/defaut.png";
                                             $cheminRel = "./Images/defaut.png";
