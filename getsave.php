@@ -17,7 +17,7 @@ if (isset($_SESSION["ID"]))
             "\"}");
     }
 }else{
-    echo("cc");
+    echo("non connecté ^^");
 }
 
 
