@@ -47,7 +47,7 @@ function hit()
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
 function autoclick(valuePerSecond)
 {
-	setInterval("increase_score("valuePerSecond")",1000);
+	setInterval("increase_score(" + valuePerSecond + ")",1000);
 }
 
 
