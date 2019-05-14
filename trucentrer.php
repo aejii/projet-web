@@ -9,20 +9,20 @@
                 <?php
                     switch ($form) {
                         case 0:
-                        ?>
-                        <form role="form"action="mdpoublier.php" method = "post">
-                            <fieldset>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Votre adresse email" name="email" autofocus>
-                                </div>
-                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Valider">
-                                <a href="login.php" class="active">Se connecter</a>
-                                <div class="form-group">
-                                    <a href="inscription.php" class="active">Pas de compte ? S'inscrire</a>
-                                </div>
-                            </fieldset>
-                        </form>
-                        <?php
+                            ?>
+                            <form role="form"action="mdpoublier.php" method = "post">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Votre adresse email" name="email" autofocus>
+                                    </div>
+                                    <input type="submit" class="btn btn-lg btn-success btn-block" value="Valider">
+                                    <a href="login.php" class="active">Se connecter</a>
+                                    <div class="form-group">
+                                        <a href="inscription.php" class="active">Pas de compte ? S'inscrire</a>
+                                    </div>
+                                </fieldset>
+                            </form>
+                            <?php
                             break;
                         case 1:
                             ?>
@@ -107,6 +107,25 @@
                                     document.getElementById('temps2').innerHTML = 'Vous etes deja connecté, redirection dans '+decompte+' secondes';
                                 }
                             </script>
+                            <?php
+                            break;
+                        case 7:
+                            ?>
+                            <a href="login.php" class="active">Lien manuel</a>
+                            <script>
+                                window.setTimeout("location=('login.php');",5000);
+                                var decompte = 5;
+                                var tmp = setInterval(myTimer, 1000);
+                                function myTimer() {
+                                    decompte--;
+                                    document.getElementById('temps2').innerHTML = 'Compte valider avec succès, redirection dans '+decompte+' secondes';
+                                }
+                            </script>
+                            <?php
+                            break;
+                        case 8://vide
+                            ?>
+                                <p><?php echo $corps ?></p>
                             <?php
                             break;
                     }

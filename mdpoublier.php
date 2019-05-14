@@ -39,7 +39,7 @@
             // email existant
             if ($donnees) {	
                 // on update le champ resetmdp
-                $hash = hash("sha256", $_POST["email"].time());
+                $hash = hash("sha512", $_POST["email"].time());
                 $req = $bdd->prepare("UPDATE utilisateurs SET resetmdp=:resetmdp WHERE email=:email");
                 $req->execute(array(
                     "resetmdp" => $hash,
@@ -74,7 +74,7 @@
                     if ($donnees) {
                         $req = $bdd->prepare("UPDATE utilisateurs SET empreinte=:empreinte , resetmdp=:newresetmdp  WHERE resetmdp=:resetmdp");
                         $req->execute(array(
-                            "empreinte" => hash("sha256", "jaimelesbananes".$_POST["mdp"]),
+                            "empreinte" => hash("sha512", "jaimelesbananes".$_POST["mdp"]),
                             "resetmdp" => $_POST["hash"],
                             "newresetmdp" => ""
                         ));

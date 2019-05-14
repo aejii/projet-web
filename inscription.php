@@ -54,6 +54,9 @@
                                         }
                                     </script>
                                 </div>
+                                <div class="panel-body">
+                                    <a href="index.php" class="active">Lien manuel</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -83,7 +86,7 @@
                                 }else{
                                     //mddp et confirmation mdp equal
                                     if ($_POST["mdp"] == $_POST["cmdp"]) {
-                                        if (strlen($_POST["mdp"])>=8) {
+                                        if (strlen($_POST["mdp"])>=7) {
                                             
                                             $chemin = __DIR__."/Images/defaut.png";
                                             $cheminRel = "./Images/defaut.png";
@@ -104,14 +107,16 @@
                                                 $cheminRel = "./Images/defaut.png";
                                             }
                                             $date = new DateTime();
-                                            $req = $bdd->prepare($creationuser);
+                                            $validation = hash("sha512", "jaimelesbananes".$_POST["pseudo"].$date->getTimestamp());
+                                            $creationutilisateur = "INSERT INTO utilisateurs (`pseudo`,`empreinte`,`inscription`,`image`,`role` , `ipinscription`, `lienvalidation`, `email`, `resetmdp`) VALUES (:pseudo , :empreinte , :insciption , :image ,0, :ip, :lienvalidation, :email, :resetmdp )";
+                                            $req = $bdd->prepare($creationutilisateur);
                                             $req->execute(array(
                                             "pseudo" => $_POST["pseudo"],
-                                            "empreinte" => hash("sha256", "jaimelesbananes".$_POST["mdp"]),
+                                            "empreinte" => hash("sha512", "jaimelesbananes".$_POST["mdp"]),
                                             "insciption" => $date->getTimestamp(),
                                             "image" => $cheminRel,
                                             "ip" => getRealIpAddr(),
-                                            "lienvalidation" => hash("sha256", "jaimelesbananes".$_POST["pseudo"]), 
+                                            "lienvalidation" => $validation, 
                                             "email" => $_POST["email"],
                                             "resetmdp" => ""
                                             ));
@@ -121,16 +126,8 @@
                                                         <div class="col-md-4 col-md-offset-4">
                                                             <div class="login-panel panel panel-green">
                                                                 <div class="panel-heading">
-                                                                    <h3 id="temps2" class="panel-title">Inscription réussite, redirection dans 5 secondes</h3>
-                                                                    <script>
-                                                                        window.setTimeout("location=('login.php');",5000);
-                                                                        var decompte = 5;
-                                                                        var tmp = setInterval(myTimer, 1000);
-                                                                        function myTimer() {
-                                                                            decompte--;
-                                                                            document.getElementById('temps2').innerHTML = 'Inscription réussite, redirection dans '+decompte+' secondes';
-                                                                        }
-                                                                    </script>
+                                                                    <h3 id="temps2" class="panel-title">Inscription réussite, veuillez valider votre email (clicker sur le lien ci dessous pour l'instant)</h3>
+                                                                    <a href="validercompte.php?validation=<?php echo $validation ?>" class="active">ici</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -159,8 +156,7 @@
                     
                 }else{//inscription normal
                     require "formulaireinscription.php";
-                }
-                //echo hash("sha256", "jaimelesbananes"."pierre");  
+                } 
             }
     ?>
     <?php require "script.php"; ?>
