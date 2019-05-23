@@ -1,7 +1,7 @@
 /* Variable declarations */
-var score = 0;			//Counts the player click and bonuses, it's the score display on screen
-var bonusValue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //Value of each bonus
-var hitGenerator = 0;	//Generator used to manage the bonuses
+var score = 0;			//Counts the player click and bonuses, it's the score displayed on screen
+var bonusValue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //Current values of each bonus
+var hitGenerator = 0;	//Generator used to create the score from bonuses
 
 /* Enumeration declaration */
 const NB_BONUSES = 20;
@@ -46,13 +46,13 @@ function hit()
 
 /*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 | sum_bonuses: Sum all the bonuses contained in the bonusValue array to		|
-			   determine the valuePerSecond rate for the autoclick function	|
+|			   determine the valuePerSecond rate for the autoclick function	|
 |																			|
 | returns:	int (the value summed)											|
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
 function sum_bonuses()
 {
-	let valuePerSecond = 0; //Value generated per second by the bonuses
+	let valuePerSecond = 0; //Value generated per second by bonuses
 	
 	
 	for (i = 0; i < NB_BONUSES; ++i) //The actual sum
@@ -160,7 +160,7 @@ function autoclick(bonusName, valueToAddPerSecond)
 			break;
 		//------------------------------------------------------------//
 		default:
-			console.log("Script.js: autoclick(): Error: Unknown bonus.");
+			console.log("Script.js: autoclick("+bonusName+", "+valueToAddPerSecond+"): Error: Unknown bonus.");
 			break;
 	}
 	
