@@ -87,6 +87,78 @@ function autoclick(bonusName, valueToAddPerSecond)
 			bonusValue[bonusList.Kaori_Miyazono] = valueToAddPerSecond;
 			break;
 		//------------------------------------------------------------//
+		case 'Nakano_Miku':
+			bonusValue[bonusList.Nakano_Miku] = valueToAddPerSecond;
+			break;
+		//------------------------------------------------------------//
+		case 'Erina':
+			bonusValue[bonusList.Erina] = valueToAddPerSecond;
+			break;
+		//------------------------------------------------------------//
+		case 'Chitoge_Kirisaki':
+			bonusValue[bonusList.Chitoge_Kirisaki] = valueToAddPerSecond;
+			break;
+		//------------------------------------------------------------//
+		case 'Hikayu':
+			bonusValue[bonusList.Hikayu] = valueToAddPerSecond;
+			break;
+		//------------------------------------------------------------//
+		case 'Tsugumi':
+			bonusValue[bonusList.Tsugumi] = valueToAddPerSecond;
+			break;
+		//------------------------------------------------------------//
+		case 'Fjorm':
+			bonusValue[bonusList.Fjorm] = valueToAddPerSecond;
+			break;
+		//------------------------------------------------------------//
+		case 'Asuna':
+			bonusValue[bonusList.Asuna] = valueToAddPerSecond;
+			break;
+		//------------------------------------------------------------//
+		case 'Alice':
+			bonusValue[bonusList.Alice] = valueToAddPerSecond;
+			break;
+		//------------------------------------------------------------//
+		case 'Lyn':
+			bonusValue[bonusList.Lyn] = valueToAddPerSecond;
+			break;
+		//------------------------------------------------------------//
+		case 'Cynthia':
+			bonusValue[bonusList.Cynthia] = valueToAddPerSecond;
+			break;
+		//------------------------------------------------------------//
+		case 'Homura_Akemi':
+			bonusValue[bonusList.Homura_Akemi] = valueToAddPerSecond;
+			break;
+		//------------------------------------------------------------//
+		case 'Rem_Ram':
+			bonusValue[bonusList.Rem_Ram] = valueToAddPerSecond;
+			break;
+		//------------------------------------------------------------//
+		case Fuwa_Aika:
+			bonusValue[bonusList.Fuwa_Aika] = valueToAddPerSecond;
+			break;
+		//------------------------------------------------------------//
+		case 'Theresia_Van_Astrea':
+			bonusValue[bonusList.Theresia_Van_Astrea] = valueToAddPerSecond;
+			break;
+		//------------------------------------------------------------//
+		case 'Yurika_Nijino':
+			bonusValue[bonusList.Yurika_Nijino] = valueToAddPerSecond;
+			break;
+		//------------------------------------------------------------//
+		case 'Emilia':
+			bonusValue[bonusList.Emilia] = valueToAddPerSecond;
+			break;
+		//------------------------------------------------------------//
+		case 'Tohru':
+			bonusValue[bonusList.Tohru] = valueToAddPerSecond;
+			break;
+		//------------------------------------------------------------//
+		case 'Megumin':
+			bonusValue[bonusList.Megumin] = valueToAddPerSecond;
+			break;
+		//------------------------------------------------------------//
 		default:
 			console.log("Script.js: autoclick(): Error: Unknown bonus.");
 			break;
