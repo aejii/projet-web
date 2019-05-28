@@ -203,10 +203,11 @@ color:rgb(0, 102, 255)
 
 
 
-.waifuImage {
+.iconImage {
     height: 60px;
     width: 60px;
     border-radius: 10px;
+    border: 1px solid black;
 }
 
 .waifuName {
@@ -282,7 +283,7 @@ color:rgb(0, 102, 255)
 }
 
 .research {
-    background-color: gray;
+    background-color: whitesmoke;
     width: 80%;
     margin: 0 auto 0 auto;
     border-radius: 10px;
