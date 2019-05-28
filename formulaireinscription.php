@@ -50,7 +50,7 @@
 <script>
     function validateForm() {
         var x = document.forms["inscriptform"]["pseudo"].value;
-        if (x.length <= 5) {
+        if (x.length <= 4) {
             alert("Votre pseudo doit possèder au moins 5 caractères");
             return false;
         }

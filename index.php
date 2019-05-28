@@ -35,11 +35,20 @@
 			header('Location: login.php');
         }
         else{
+            require "connection.php";
+            $req = $bdd->prepare("SELECT id, pseudo, inscription, image, role, coins, nbClic, tempsPasse, ennemiestuees FROM utilisateurs WHERE id=:id");
+            $req->execute(array(
+                "id" => $_SESSION["ID"]
+            ));
+            $donnees = $req->fetch();
+            if ($donnees) {
+                $pseudo = $donnees['pseudo'];
+            }
     ?>    
     <div id="infos">
         <div id="player">
             <img id="playerPFP" src="Images/waifuLux.jpg" /><br/>
-            <div class="playerName"><strong> Reshi</strong></div>
+            <div class="playerName"><strong> <?php echo $pseudo; ?></strong></div>
         </div>
 
         <div id="scores"><div class="score"><strong>Dps Total : </strong>0</div>
