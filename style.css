@@ -131,12 +131,6 @@ color:#ffda4b
     display:none;
 }
 
-.btn-upgrade {
-    color: #fff;
-    background-color: #337ab7;
-    border-color: #2e6da4;
-    font-size: 1em;
-}
 
 
 /* WAIFUS */
@@ -165,8 +159,8 @@ color:#ffda4b
 }
 
 .ongletWaifuI {
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
 }
 
 .uplio {
@@ -214,45 +208,6 @@ color:rgb(0, 102, 255)
     font-size: 2em;
 }
 
-.btn {
-    display: inline-block;
-    padding: 6px 12px;
-    margin-bottom: 0;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.42857143;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    color: #fff;
-    background-color: #337ab7;
-    border-color: #2e6da4;
-}
-
-.btn:hover{
-    
-    color: #fff;
-    background-color: #165a96;
-    border-color: #2e6da4;
-}
-
-
-.btn:active{
-    
-    color: #fff;
-    background-color: #0a3861;
-    border-color: #2e6da4;
-}
 
 #upgradeArrow {
     height: 20px;
@@ -295,14 +250,15 @@ color:rgb(0, 102, 255)
     text-align: center;
 }
 
+
 .hearts {
     font-size: 5em;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 #heart {
-    height: 70px;
-    width: 70px;
+    height: 60px;
+    width: 60px;
 }
 
 #tinyHeart {

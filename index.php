@@ -13,6 +13,12 @@
     <link href="dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="style.css" />
+    
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="dist/js/sb-admin-2.js"></script>
+    <script type="text/javascript" src="script.js" ></script>
 </head>
 
 <header>
@@ -51,21 +57,26 @@
         <div id="achievements">
             <h1 id="achiTitle">Succès</h1>
             <abbr title=" ~ Votre premiere waifu !"><img class="achievement" src="Images/achFirstLove.png" /></abbr>
-            <img class="achievement" src="Images/emptyAchievement.png" />
-            <img class="achievement" src="Images/emptyAchievement.png" />
-            <img class="achievement" src="Images/emptyAchievement.png" />
-            <img class="achievement" src="Images/emptyAchievement.png" />
-            <img class="achievement" src="Images/emptyAchievement.png" />
-            <img class="achievement" src="Images/emptyAchievement.png" />
-            <img class="achievement" src="Images/emptyAchievement.png" />
-            <img class="achievement" src="Images/emptyAchievement.png" />
             <abbr title="Speedrunner ~ ClickClickClickClickClick 10 Click par secondes"><img class="achievement" src="Images/achSpeedrunner.png" /></abbr>
             <abbr title="Premieres Lueures ~ "><img class="achievement" src="Images/achGotPoint.png" /></abbr>
             <abbr title="Studying Hard ~ Vous avez fait la moitié du chemin"><img class="achievement" src="Images/achStudying.png" /></abbr>
             <abbr title="Elementaliste ~ Puissance maximum."><img class="achievement" src="Images/achElementalist.png" /></abbr>
             <abbr title="Force de la trinité ~ Des tonnes de dégats"><img class="achievement" src="Images/achTriforce.png" /></abbr>
             <abbr title="100% ~ Vous avez obtenu tous les succes !"><img class="achievement" src="Images/ach100.png" /></abbr>
+            <abbr title="100% ~ Vous avez atteint 1000 DPS"><img class="achievement" src="Images/emptyAchievement.png" /></abbr>
+            <abbr title="100% ~ Vous avez atteint 1M DPS"><img class="achievement" src="Images/emptyAchievement.png" /></abbr>
+            <abbr title="100% ~ Vous avez atteint 1B DPS"><img class="achievement" src="Images/emptyAchievement.png" /></abbr>
+            <abbr title="100% ~ Vous avez atteint 1T DPS"><img class="achievement" src="Images/emptyAchievement.png" /></abbr>
+            <abbr title="100% ~ Vous avez atteint 1Q DPS"><img class="achievement" src="Images/emptyAchievement.png" /></abbr>
             <abbr title="100% ~ You got all achievements !"><img class="secretAchievement" src="Images/achElementalist.png" /></abbr>
+            <img class="achievement" src="Images/emptyAchievement.png" />
+            <img class="achievement" src="Images/emptyAchievement.png" />
+            <img class="achievement" src="Images/emptyAchievement.png" />
+            <img class="achievement" src="Images/emptyAchievement.png" />
+            <img class="achievement" src="Images/emptyAchievement.png" />
+            <img class="achievement" src="Images/emptyAchievement.png" />
+            <img class="achievement" src="Images/emptyAchievement.png" />
+            <img class="achievement" src="Images/emptyAchievement.png" />
             <img class="achievement" src="Images/emptyAchievement.png" />
             <img class="achievement" src="Images/emptyAchievement.png" />
             <img class="achievement" src="Images/emptyAchievement.png" />
@@ -81,7 +92,7 @@
 
         <ul id="upgradeOnglets">
             <li class="uplio active"><a data-toggle="tab" href="#upgrades1"><img class="ongletWaifuI" src="Images/logoRond.png" /></a></li>
-            <li class="uplio"><a data-toggle="tab" href="#upgrades2"><img class="ongletWaifuI" src="Images/elemSymbol.png" /></a></li>          
+            <li class="uplio"><a data-toggle="tab" href="#upgrades2"><img class="ongletWaifuI" src="Images/elemSymbol.png" /></a></li>
             <li class="uplio"><a data-toggle="tab" href="#upgrades3"><img class="ongletWaifuI" src="Images/researchLabSymbol.png" /></a></li>
         </ul>
 
@@ -90,11 +101,7 @@
                 <h1  class="waifuT">Waifus</h1>
                 <div id="autoclick1" id="autoclick" class="waifu">
                     <img class="iconImage" src="Images/AYAYA.png" /><div class="waifuName"> Karen Kujo </div><div class="upgLevel">Lv.1</div>
-                    <!--<br/>
-                    <div class="meter">
-                    <span style="width: 25%"></span>
-                    </div>-->
-                    <div class="damages">DPS: 0 (Suivant : +1)</div><br/>
+                    <div class="damages">DPS: 0 (Suivant : +10)</div><br/>
                     <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 100 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
                 </div>
                 <br/>
@@ -166,7 +173,7 @@
                 <br/>
                 <div id="autoclick13" class="waifu">
                     <img class="iconImage" src="Images/waifuHomura.png" /><div class="waifuName"> Homura Akemi </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +1B)</div> 
+                    <div class="damages">DPS: 0 (Suivant : +300M)</div> 
                     <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 800M <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
                 </div>
                 <br/>
@@ -178,37 +185,37 @@
                 <br/>
                 <div id="autoclick15" class="waifu">
                     <img class="iconImage" src="Images/waifuFuwa.png" /><div class="waifuName"> Fuwa Aika </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +50M)</div> 
+                    <div class="damages">DPS: 0 (Suivant : +10B)</div> 
                     <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 25B <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
                 </div>
                 <br/>
                 <div id="autoclick16" class="waifu">
                     <img class="iconImage" src="Images/waifuTheresia.png" /><div class="waifuName"> Theresia Van Astrea </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +1B)</div> 
+                    <div class="damages">DPS: 0 (Suivant : +50B)</div> 
                     <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 100B <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
                 </div>
                 <br/>
                 <div id="autoclick17" class="waifu">
                     <img class="iconImage" src="Images/waifuYurika.png" /><div class="waifuName"> Yurika Nijino </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +1B)</div> 
+                    <div class="damages">DPS: 0 (Suivant : +500B)</div> 
                     <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 777B <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
                 </div>
                 <br/>
                 <div id="autoclick18" class="waifu">
                     <img class="iconImage" src="Images/waifuEmilia.png" /><div class="waifuName"> Emilia </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +1B)</div> 
+                    <div class="damages">DPS: 0 (Suivant : +3T)</div> 
                     <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 6T <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
                 </div>
                 <br/>
                 <div id="autoclick19" class="waifu">
                     <img class="iconImage" src="Images/waifuTohru.png" /><div class="waifuName"> Tohru </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +1B)</div> 
+                    <div class="damages">DPS: 0 (Suivant : +30T)</div> 
                     <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 34T 5 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
                 </div>
                 <br/>
                 <div id="autoclick20" class="waifu">
                     <img class="iconImage" src="Images/waifuMegumin.png" /><div class="waifuName"> Megumin </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +1B)</div> 
+                    <div class="damages">DPS: 0 (Suivant : +200T)</div> 
                     <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 99T 999 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
                 </div>
                 <br/>
@@ -219,8 +226,8 @@
                 <div id="elem">
                     <img class="elemImage" src="Images/LightLux.png" /><br/>
                     <div class="waifuName"> Luxanna </div>Lv.1<br/>
-                    DPS: 0 (Suivant : +10)<br/>
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 1019 <img id="tinyHeart" src="Images/heart.png"/>
+                    DPS: 0 (Suivant : +1019)<br/>
+                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 3340 <img id="tinyHeart" src="Images/heart.png"/>
                 </div>
 
                 <br/>
@@ -233,14 +240,14 @@
                 </div>
                 <br/>
                 <div class="aura">
-                    <img class="iconImage" src="Images/iconWater.png" /><div class="waifuName"> Aura d'eau :  </div><br/>
-                    Effet : <br/>
+                    <img class="iconImage" src="Images/iconWater.png" /><div class="waifuName"> Aura d'eau : Flux constant</div><br/>
+                    Effet : Clic automatiquement toute les deux secondes<br/>
                     <button type="button" class="btn btn-lvlup">Débloquer</button> <button type="button" class="btn btn-lvlup">Choisir cette aura</button>
                 </div>
                 <br/>
                 <div class="aura">
-                    <img class="iconImage" src="Images/iconAir.png" /><div class="waifuName"> Aura de vent :  </div><br/>
-                    Effet : <br/>
+                    <img class="iconImage" src="Images/iconAir.png" /><div class="waifuName"> Aura de vent : Vent arrière</div><br/>
+                    Effet : Diminue le coût du batiment le plus cher de 10%<br/>
                     <button type="button" class="btn btn-lvlup">Débloquer</button> <button type="button" class="btn btn-lvlup">Choisir cette aura</button>
                 </div>
                 <br/>
@@ -249,7 +256,7 @@
                     Effet : Augmente les dégats de clics de 15%<br/>
                     <button type="button" class="btn btn-lvlup">Débloquer</button> <button type="button" class="btn btn-lvlup">Choisir cette aura</button>
                 </div>
-                <br/>
+                <!--<br/>
                 <div class="aura">
                     <img class="iconImage" src="Images/iconMystic.png" /><div class="waifuName"> Aura mystique : </div><br/>
                     Effet : <br/>
@@ -273,7 +280,7 @@
                     Effet : En l'abscence de clic, stock de la furie augmentant énormément les dégats d'un prochain clic<br/>
                     <button type="button" class="btn btn-lvlup">Débloquer</button> <button type="button" class="btn btn-lvlup">Choisir cette aura</button>
                 </div>
-                <br/>
+                <br/>-->
                 <div class="aura">
                     <img class="iconImage" src="Images/iconLight.png" /><div class="waifuName"> True Light Aura : Prism </div><br/>
                     Effet : Vous pouvez choisir 2 auras simultanément<br/>
@@ -283,13 +290,35 @@
         
         
             <div id="upgrades3" class="tab-pane fade">    
-                <h1 id="waifuT">Laboratoire de recherche</h1>
+            <h1 id="waifuT">Elementaliste</h1>
                 <div class="research">
                     <img class="iconImage" src="Images/resClic.jpg" /><div class="waifuName"> Optimisation des clics </div><div class="upgLevel">Lv.1</div><br/>
                     Effet : Augmente les dégats des clics.<br/>
                     +1 dégat(s) par clic<br/>
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 800M <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
+                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 1000 <img id="tinyHeart" src="Images/heart.png"/>
                 </div>
+                <br/>
+                <div class="research">
+                    <img class="iconImage" src="Images/resLink.jpg" /><div class="waifuName"> Lien </div><div class="upgLevel">Lv.1</div><br/>
+                    Effet : Augmente les dégats des clics proportionelement au DPS total des Waifus.<br/>
+                    +1% du DPS<br/>
+                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 10k <img id="tinyHeart" src="Images/heart.png"/>
+                </div>   
+                <br/>
+                <div class="research">
+                    <img class="iconImage" src="Images/resTrainer.png" /><div class="waifuName"> Entraîneur </div><div class="upgLevel">Lv.1</div><br/>
+                    Effet : Augmente periodiquement le niveau d'une Waifu <br/>
+                    10 min entre chaque amélioration<br/>
+                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 1M <img id="tinyHeart" src="Images/heart.png"/>
+                </div>  
+                <br/>
+                <!--<div class="research">
+                    <h1 id="waifuT">Usine a sorts</h1>
+                    <img class="iconImage" src="Images/resSpell.jpg" /><div class="waifuName"> Optimisation des clics </div><div class="upgLevel">Lv.1</div><br/>
+                    Effet : Produit diverses sorts aléatoirement a utiliser<br/>
+                    10 min entre chaque sort<br/>
+                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 1M <img id="tinyHeart" src="Images/heart.png"/>
+                </div>-->
             </div>
     
         </div>
@@ -298,17 +327,11 @@
 
     <div id="center">
         <span class="hearts" id="score">0</span><img id="heart" src="Images/heart.png"/>
-        <img onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;" id="clicMe" class="pulse" src="Images/clicMe.png" onclick="hit()" />
+        <img onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;" id="clicMe" class="pulse" src="Images/logoRond.png" onclick="hit()" />
     </div>
     <?php
         }
     ?>
-
-    
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/metisMenu/metisMenu.min.js"></script>
-    <script src="dist/js/sb-admin-2.js"></script>
 
 </body>
 
