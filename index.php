@@ -290,7 +290,7 @@
         
         
             <div id="upgrades3" class="tab-pane fade">    
-            <h1 id="waifuT">Elementaliste</h1>
+            <h1 id="waifuT">Research Lab</h1>
                 <div class="research">
                     <img class="iconImage" src="Images/resClic.jpg" /><div class="waifuName"> Optimisation des clics </div><div class="upgLevel">Lv.1</div><br/>
                     Effet : Augmente les dégats des clics.<br/>

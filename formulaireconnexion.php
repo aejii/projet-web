@@ -9,7 +9,11 @@
                         <form role="form"action="login.php" method = "post">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Nom d'utilisateur" name="pseudo" autofocus>
+                                    <?php if(isset($erreur)){ ?>
+                                        <input class="form-control" placeholder="Nom d'utilisateur" name="pseudo" value="<?php echo $_POST["pseudo"] ?>" autofocus>
+                                    <?php }else{ ?>
+                                        <input class="form-control" placeholder="Nom d'utilisateur" name="pseudo" autofocus>
+                                    <?php } ?>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Mot de passe" name="mdp" type="password" value="">

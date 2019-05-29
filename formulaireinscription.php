@@ -27,15 +27,15 @@
                             </div>
                             <input type="submit" class="btn btn-lg btn-success btn-block" value="Valider">
                             <?php if(isset($erreur)){ ?>
-                                    <p>
-                                        <div class ="panel panel-red">
-                                            <div class ="panel-heading">
-                                                <?php echo $erreur ?>
-                                            </div>
+                                <p>
+                                    <div class ="panel panel-red">
+                                        <div class ="panel-heading">
+                                            <?php echo $erreur ?>
                                         </div>
-                                    </p>
-                                    
-                                <?php } ?>
+                                    </div>
+                                </p>
+                                
+                            <?php } ?>
                             <div class="form-group">
                                 <a href="login.php" class="active">Deja un compte ? Se connecter</a>
                             </div>
