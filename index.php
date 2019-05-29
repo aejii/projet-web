@@ -47,12 +47,13 @@
             ));
             $donnees = $req->fetch();
             if ($donnees) {
-                $pseudo = $donnees['pseudo'];
+                $pseudo = $donnees['pseudo'];// information static (non modifier en js)
+                $imggg = $donnees['image'];
             }
     ?>    
     <div id="infos">
         <div id="player">
-            <img id="playerPFP" src="Images/waifuLux.jpg" /><br/>
+            <img id="playerPFP" src="<?php echo $imggg; ?>" /><br/>
             <div class="playerName"><strong> <?php echo $pseudo; ?></strong></div>
         </div>
 
@@ -108,126 +109,21 @@
         <div class="tab-content">
             <div id="upgrades1" class="tab-pane fade in active">
                 <h1  class="waifuT">Waifus</h1>
-                <div id="autoclick1" id="autoclick" class="waifu">
-                    <img class="iconImage" src="Images/AYAYA.png" /><div class="waifuName"> Karen Kujo </div><div class="upgLevel">Lv.1</div>
-                    <div class="damages">DPS: 0 (Suivant : +10)</div><br/>
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 100 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
-                <div id="autoclick2" class="waifu">
-                    <img class="iconImage" src="Images/waifuKaori.png" /><div class="waifuName"> Kaori Miyazono </div><div class="upgLevel">Lv.1</div>
-                    <div class="damages">DPS: 0 (Suivant : +100)</div>
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 700 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
-                <div id="autoclick3" class="waifu">
-                    <img class="iconImage" src="Images/waifuNakano.png" /><div class="waifuName"> Nakano Miku </div><div class="upgLevel">Lv.1</div>
-                    <div class="damages">DPS: 0 (Suivant : +500)</div>
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 2000 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
-                <div id="autoclick4" class="waifu">
-                    <img class="iconImage" src="Images/waifuErina.png" /><div class="waifuName"> Erina </div><div class="upgLevel">Lv.1</div>
-                    <div class="damages">DPS: 0 (Suivant : +1000)</div>
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 10k <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
-                <div id="autoclick5" class="waifu">
-                    <img class="iconImage" src="Images/waifuChitoge.png" /><div class="waifuName"> Chitoge Kirisaki </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +5000)</div> 
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 40k <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
-                <div id="autoclick6" class="waifu">
-                    <img class="iconImage" src="Images/waifuHikayu.jpg" /><div class="waifuName"> Hikayu </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +15k)</div> 
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 150k <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
-                <div id="autoclick7" class="waifu">
-                    <img class="iconImage" src="Images/waifuTsugumi.png" /><div class="waifuName"> Tsugumi </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +50k)</div> 
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 550k <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
-                <div id="autoclick8" class="waifu">
-                    <img class="iconImage" src="Images/waifuFjorm.png" /><div class="waifuName"> Fjorm </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +250k)</div> 
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 1M 1 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
-                <div id="autoclick9" class="waifu">
-                    <img class="iconImage" src="Images/waifuAsuna.png" /><div class="waifuName"> Asuna </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +1M)</div> 
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 3M 4 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
-                <div id="autoclick10" class="waifu">
-                    <img class="iconImage" src="Images/waifuAlice.png" /><div class="waifuName"> Alice </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +3M)</div> 
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 10M <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
-                <div id="autoclick11" class="waifu">
-                    <img class="iconImage" src="Images/waifuLyn.png" /><div class="waifuName"> Lyn </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +10M)</div> 
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 42M <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
-                <div id="autoclick12" class="waifu">
-                    <img class="iconImage" src="Images/waifuCynthia1.png" /><div class="waifuName"> Cynthia </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +100M)</div> 
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 153M <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
-                <div id="autoclick13" class="waifu">
-                    <img class="iconImage" src="Images/waifuHomura.png" /><div class="waifuName"> Homura Akemi </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +300M)</div> 
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 800M <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
-                <div id="autoclick14" class="waifu">
-                    <img class="iconImage" src="Images/waifuRemRam.png" /><div class="waifuName"> Rem&Ram </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +1B)</div> 
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 3B <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
-                <div id="autoclick15" class="waifu">
-                    <img class="iconImage" src="Images/waifuFuwa.png" /><div class="waifuName"> Fuwa Aika </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +10B)</div> 
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 25B <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
-                <div id="autoclick16" class="waifu">
-                    <img class="iconImage" src="Images/waifuTheresia.png" /><div class="waifuName"> Theresia Van Astrea </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +50B)</div> 
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 100B <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
-                <div id="autoclick17" class="waifu">
-                    <img class="iconImage" src="Images/waifuYurika.png" /><div class="waifuName"> Yurika Nijino </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +500B)</div> 
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 777B <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
-                <div id="autoclick18" class="waifu">
-                    <img class="iconImage" src="Images/waifuEmilia.png" /><div class="waifuName"> Emilia </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +3T)</div> 
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 6T <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
-                <div id="autoclick19" class="waifu">
-                    <img class="iconImage" src="Images/waifuTohru.png" /><div class="waifuName"> Tohru </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +30T)</div> 
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 34T 5 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
-                <div id="autoclick20" class="waifu">
-                    <img class="iconImage" src="Images/waifuMegumin.png" /><div class="waifuName"> Megumin </div><div class="upgLevel">Lv.1</div> 
-                    <div class="damages">DPS: 0 (Suivant : +200T)</div> 
-                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 99T 999 <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                </div>
-                <br/>
+                <?php
+                    $req = $bdd->prepare("SELECT idAmel, nom, baseDamage, coinsforlvlup, coinsforunlock, imageLink FROM amelioration");
+                    $req->execute();
+                    $donnees = $req->fetch();   
+                    while ($donnees = $req->fetch()){
+                        ?>
+                            <div id="autoclick<?php echo $donnees['idAmel']; ?>" class="waifu">
+                                <img class="iconImage" src="<?php echo $donnees['imageLink']; ?>" /><div class="waifuName"> <?php echo $donnees['nom']; ?> </div><div class="upgLevel">Lv.1</div>
+                                <div class="damages">DPS: 0 (Suivant : +<?php echo $donnees['baseDamage']; ?>)</div><br/>
+                                <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : <?php echo $donnees['coinsforlvlup']; ?> <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
+                            </div>
+                            <br/>
+                        <?php
+                    }
+                ?>
             </div>
         
             <div id="upgrades2" class="tab-pane fade">    
