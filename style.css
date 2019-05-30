@@ -159,8 +159,8 @@ color:#ffda4b
 }
 
 .ongletWaifuI {
-    height: 30px;
-    width: 30px;
+    height: 50px;
+    width: 50px;
 }
 
 .uplio {
@@ -228,6 +228,7 @@ color:rgb(0, 102, 255)
     height: 100px;
     width: 100px;
     border-radius: 10px;
+    border: 1px solid black;
 }
 
 .aura {

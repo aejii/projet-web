@@ -104,7 +104,6 @@
 
             <ul id="upgradeOnglets">
                 <li class="uplio active"><a data-toggle="tab" href="#upgrades1"><img class="ongletWaifuI" src="Images/logoRond.png" /></a></li>
-                <li class="uplio"><a data-toggle="tab" href="#upgrades2"><img class="ongletWaifuI" src="Images/elemSymbol.png" /></a></li>
                 <li class="uplio"><a data-toggle="tab" href="#upgrades3"><img class="ongletWaifuI" src="Images/researchLabSymbol.png" /></a></li>
             </ul>
 
@@ -128,48 +127,7 @@
                     ?>
                 </div>
             
-                <div id="upgrades2" class="tab-pane fade">    
-                    <h1 id="waifuT">Elementaliste</h1>
-                    <div id="elem">
-                        <img class="elemImage" src="Images/LightLux.png" /><br/>
-                        <div class="waifuName"> Luxanna </div>Lv.1<br/>
-                        DPS: 0 (Suivant : +1019)<br/>
-                        <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 3340 <img id="tinyHeart" src="Images/heart.png"/>
-                    </div>
-
-                    <br/>
-                    <h2 id="waifuT">Auras</h2>
-
-                    <div class="aura">
-                        <img class="iconImage" src="Images/iconNature.png" /><div class="waifuName"> Aura naturelle : Récolte </div><br/>
-                        Effet : Augmente toutes les sources de dégats de 5%<br/>
-                        <button type="button" class="btn btn-lvlup">Débloquer</button> <button type="button" class="btn btn-lvlup">Choisir cette aura</button>
-                    </div>
-                    <br/>
-                    <div class="aura">
-                        <img class="iconImage" src="Images/iconWater.png" /><div class="waifuName"> Aura d'eau : Flux constant</div><br/>
-                        Effet : Clic automatiquement toute les deux secondes<br/>
-                        <button type="button" class="btn btn-lvlup">Débloquer</button> <button type="button" class="btn btn-lvlup">Choisir cette aura</button>
-                    </div>
-                    <br/>
-                    <div class="aura">
-                        <img class="iconImage" src="Images/iconAir.png" /><div class="waifuName"> Aura de vent : Vent arrière</div><br/>
-                        Effet : Diminue le coût du batiment le plus cher de 10%<br/>
-                        <button type="button" class="btn btn-lvlup">Débloquer</button> <button type="button" class="btn btn-lvlup">Choisir cette aura</button>
-                    </div>
-                    <br/>
-                    <div class="aura">
-                        <img class="iconImage" src="Images/iconFire.png" /><div class="waifuName"> Aura de feu : Poings </div><br/>
-                        Effet : Augmente les dégats de clics de 15%<br/>
-                        <button type="button" class="btn btn-lvlup">Débloquer</button> <button type="button" class="btn btn-lvlup">Choisir cette aura</button>
-                    </div>
-                    <br/>
-                    <div class="aura">
-                        <img class="iconImage" src="Images/iconLight.png" /><div class="waifuName"> True Light Aura : Prism </div><br/>
-                        Effet : Vous pouvez choisir 2 auras simultanément<br/>
-                        <button type="button" class="btn btn-lvlup">Débloquer</button> 
-                    </div>
-                </div>
+               
             
             
                 <div id="upgrades3" class="tab-pane fade">    
