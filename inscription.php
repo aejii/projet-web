@@ -93,8 +93,8 @@
                                             try
                                             {
                                                 $ext = pathinfo($_FILES["fichier"]["name"], PATHINFO_EXTENSION);
-                                                $chemin = __DIR__."/Uploads/".$_POST["pseudo"].".".$ext;
-                                                $cheminRel = "./Uploads/".$_POST["pseudo"].".".$ext;
+                                                $chemin = __DIR__."/Images/".$_POST["pseudo"].".".$ext;
+                                                $cheminRel = "./Images/".$_POST["pseudo"].".".$ext;
                                                 if (!move_uploaded_file($_FILES["fichier"]["tmp_name"], $chemin))
                                                 {
                                                     $chemin = __DIR__."/Images/defaut.png";
@@ -120,6 +120,24 @@
                                             "email" => $_POST["email"],
                                             "resetmdp" => ""
                                             ));
+
+                                            $req = $bdd->prepare("SELECT ID FROM utilisateurs WHERE pseudo=:pseudo AND empreinte=:empreinte");
+                                            $req->execute(array(
+                                            "pseudo" => $_POST["pseudo"],
+                                            "empreinte" => hash("sha512", "jaimelesbananes".$_POST["mdp"])
+                                            ));
+                                            $donnees = $req->fetch();
+                                            $idjoueur = $donnees['ID'];
+
+                                            $req = $bdd->prepare("select idAmel from amelioration");
+                                            $req->execute();
+                                            while ($donnees = $req->fetch()){
+                                                $req2 = $bdd->prepare("INSERT INTO joueuramel (`idjoueur`,`idAmel`,`level`) VALUES (:idjoueur,:idAmel,0)");
+                                                $req2->execute(array(
+                                                    "idjoueur" => $idjoueur,
+                                                    "idAmel" => $donnees['idAmel']
+                                                ));
+                                            }
                                             ?>
                                                 <div class="container">
                                                     <div class="row">

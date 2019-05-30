@@ -8,7 +8,7 @@ var login = "";
 const NB_BONUSES = 20;
 const bonusList = {Karen_Kujo: 0, Kaori_Miyazono: 1, Nakano_Miku: 2, Erina: 3, Chitoge_Kirisaki: 4, Hikayu: 5, Tsugumi: 6, Fjorm: 7, Asuna: 8, Alice: 9, Lyn: 10, Cynthia: 11, Homura_Akemi: 12, Rem_Ram: 13, Fuwa_Aika: 14, Theresia_Van_Astrea: 15, Yurika_Nijino: 16, Emilia: 17, Tohru: 18, Megumin: 19};
 
-
+load_data();
 /*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 | update: Update the score output in the html page							|
 |																			|
@@ -177,11 +177,25 @@ function autoclick(bonusName, valueToAddPerSecond)
 |																			|
 | returns:		void														|
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
-function load_data(l, s, bV)
+function load_data()
 {
-	login = l;
-	score = s;
-	bonusValue = bV;
+	var xhr = new XMLHttpRequest();
+		xhr.open("POST", "load.php", true);
+		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function (e) {
+			if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+				console.log("onreadystatechange : "+xhr.responseText);
+				var obj = JSON.parse(xhr.responseText);
+
+				login = parseInt(obj.login);
+				score = parseInt(obj.score);
+
+				//update affichage
+				update();
+
+			}
+		};
+    xhr.send();
 }
 
 
@@ -205,7 +219,7 @@ function save_data()
 		
 	xhttp.open("POST", "savedata.php", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("login=" + login + "&score=" + score + "&bonusValue=" + bonusValue);
+	xhttp.send("login=" + login + "&score=" + score);
 }
 
 
