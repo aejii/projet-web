@@ -2,6 +2,7 @@
 var score = 0;			//Counts the player click and bonuses, it's the score displayed on screen
 var bonusValue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //Current values of each bonus
 var hitGenerator = 0;	//Generator used to create the score from bonuses
+var login = "";
 
 /* Enumeration declaration */
 const NB_BONUSES = 20;
@@ -165,9 +166,46 @@ function autoclick(bonusName, valueToAddPerSecond)
 	}
 	
 	valuePerSecond = sum_bonuses();
-console.debug("Script.js: autoclick(): valuePerSecond = " + valuePerSecond); //Debug
+	
 	clearInterval(window.hitGenerator);
 	window.hitGenerator = setInterval("increase_score(" + valuePerSecond + ")", 1000);
+}
+
+
+/*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+| load_data:	Load data from the database of the given user				|
+|																			|
+| returns:		void														|
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
+function load_data(l, s, bV)
+{
+	login = l;
+	score = s;
+	bonusValue = bV;
+}
+
+
+/*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+| save_data:	Save data of the user's current session into database		|
+|																			|
+| returns:		void														|
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
+function save_data()
+{
+	var xhttp = new XMLHttpRequest();
+	
+	
+	xhttp.onreadystatechange = function()
+	{
+		if (this.readyState == 4 && this.status == 200)
+		{
+			console.log(this.responseText);
+		}
+	};
+		
+	xhttp.open("POST", "savedata.php", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send("login=" + login + "&score=" + score + "&bonusValue=" + bonusValue);
 }
 
 
