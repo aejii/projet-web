@@ -12,14 +12,13 @@ if (isset($_SESSION["ID"]))
     //while ( $donnees = $req->fetch() )
     $donnees = $req->fetch();
     if ($donnees) {
-        echo ("{\"login\":\"".$donnees['pseudo'].
-            "\",\"score\":\"".$donnees['coins'].
-            "\",\"nbClic\":\"".$donnees['nbClic'].
-            "\",\"tempsPasse\":\"".$donnees['tempsPasse']);
-
-
-            
-            $req = $bdd->prepare("select idAmel from amelioration");
+      $resultat = array(
+        'login' => $donnees['pseudo'],
+        'score' => $donnees['coins'],
+        'nbClic' => $donnees['nbClic'],
+        'tempsPasse'=> $donnees['tempsPasse']
+      );
+            $req = $bdd->prepare("select idAmel, baseDamage, coinsforlvlup, coinsforunlock from amelioration");
             $req->execute();
             while ($donnees = $req->fetch()){
                 $req2 = $bdd->prepare("SELECT idjoueur, idAmel, level FROM joueuramel WHERE idjoueur=:idjoueur and idAmel=:idAmel");
@@ -29,10 +28,15 @@ if (isset($_SESSION["ID"]))
                 ));
                 $donnees2 = $req2->fetch();
                 if ($donnees2) {
-                    echo("\",\"amel".$donnees['idAmel']."\":\"".$donnees2['level']);
+                    $resultat['ameliorations'] ["amel".$donnees['idAmel']] = array(
+                      'lvl' => $donnees2['level'],
+                      'basedmg' => $donnees['baseDamage'],
+                      'lvlup' => $donnees['coinsforlvlup'],
+                      'unlock' => $donnees['coinsforunlock']
+                    );
                 }
             }
-        echo("\"}");
+        echo json_encode($resultat);
     }
 }else{
     echo("non connecté");

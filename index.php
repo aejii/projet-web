@@ -81,11 +81,11 @@
                             $donnees2 = $req2->fetch();
                             if ($donnees2) {
                                 ?>
-                                <a id="achiev<?php echo $donnees2['idAchiev2']; ?>"  href="#" title="<?php echo $donnees2['nom']; ?>" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo $donnees2['description']; echo(" (Obtenu le : ");echo $donnees2['quand'];echo(")"); ?>"><img class="achievement" src="<?php echo $donnees2['imageLink']; ?>" /></a>
+                                <a id="achiev<?php echo $donnees2['idAchiev2']; ?>"  href="#" title="<?php echo $donnees2['nom']; ?>" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo $donnees2['description']; ?>"><img class="achievement" src="<?php echo $donnees2['imageLink']; ?>" /></a>
                                 <?php
                             }else{
                                 ?>
-                                    <a id="achiev<?php echo $donnees['idAchiev']; ?>"  href="#" title="<?php echo("Succès non débloqué"); ?>" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo("Mystère...");?>"><img class="achievement" src="Images/emptyAchievement.png" /></a>
+                                    <a id="achiev<?php echo $donnees['idAchiev']; ?>"  href="#" title="<?php echo("Succès non débloqué"); ?>" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo("Mystère..."); ?>"><img class="achievement" src="Images/emptyAchievement.png" /></a>
                                 <?php
                             }
                         }
@@ -117,7 +117,7 @@
                             $donnees2 = $req2->fetch();
                             if($donnees2['level']==0){
                                 ?>
-                                    <div id="autoclick<?php echo $donnees['idAmel']; ?>" class="waifu locked">
+                                    <div id="autoclickamel<?php echo $donnees['idAmel']; ?>" class="waifu locked">
                                         <img class="iconImage" src="<?php echo $donnees['imageLink']; ?>" /><div class="waifuName"> <?php echo $donnees['nom']; ?> </div><div class="upgLevel">Lv.<?php echo $donnees2['level'] ?></div>
                                         <div class="damages">DPS: 0 (Suivant : +<?php echo $donnees['baseDamage']; ?>)</div><br/>
                                         <button type="button" class="btn btn-lvlup disabled">NIVEAU SUP. !</button> Coût : <?php echo $donnees['coinsforlvlup']; ?> <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup disabled">x10</button>
@@ -126,7 +126,7 @@
                                 <?php
                             }else{
                                 ?>
-                                    <div id="autoclick<?php echo $donnees['idAmel']; ?>" class="waifu">
+                                    <div id="autoclickamel<?php echo $donnees['idAmel']; ?>" class="waifu">
                                         <img class="iconImage" src="<?php echo $donnees['imageLink']; ?>" /><div class="waifuName"> <?php echo $donnees['nom']; ?> </div><div class="upgLevel">Lv.<?php echo $donnees2['level'] ?></div>
                                         <div class="damages">DPS: 0 (Suivant : +<?php echo $donnees['baseDamage']; ?>)</div><br/>
                                         <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : <?php echo $donnees['coinsforlvlup']; ?> <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
@@ -171,8 +171,12 @@
         </div>
 
         <div id="center">
-            <span class="hearts" id="score"></span><img id="heart" src="Images/heart.png"/>
-            <img onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;" id="clicMe" class="pulse" src="Images/logoRond.png" onclick="hit()" />
+            <span class="hearts" id="score" onchange="unlock()"></span><img id="heart" src="Images/heart.png"/>
+            <img onselectstart="return false"
+							oncontextmenu="return false"
+							ondragstart="return false"
+							onMouseOver="window.status='..message perso .. '; return true;"
+							id="clicMe" class="pulse" src="Images/logoRond.png" onclick="hit()" />
         </div>
         <?php
             }
@@ -181,7 +185,7 @@
 
     <script>
         $(document).ready(function(){
-            $('[data-toggle="popover"]').popover();   
+            $('[data-toggle="popover"]').popover();
         });
     </script>
 

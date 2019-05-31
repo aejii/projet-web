@@ -5,6 +5,7 @@ var hitGenerator = 0;	//Generator used to create the score from bonuses
 var login = "";
 var timeSpent = 0;
 var nbClic = 0;
+var ameliorations = {};
 /* Enumeration declaration */
 const NB_BONUSES = 20;
 const bonusList = {Karen_Kujo: 0, Kaori_Miyazono: 1, Nakano_Miku: 2, Erina: 3, Chitoge_Kirisaki: 4, Hikayu: 5, Tsugumi: 6, Fjorm: 7, Asuna: 8, Alice: 9, Lyn: 10, Cynthia: 11, Homura_Akemi: 12, Rem_Ram: 13, Fuwa_Aika: 14, Theresia_Van_Astrea: 15, Yurika_Nijino: 16, Emilia: 17, Tohru: 18, Megumin: 19};
@@ -20,7 +21,6 @@ function update()
 	document.getElementById("score").innerHTML = score; //Replaces the displayed score by the updated one
 	document.getElementById("tempsPasse").innerHTML = timeSpent +"s"; //Replaces the displayed time spent by the updated one
 	document.getElementById("nbClic").innerHTML = nbClic; //Replaces the displayed nb of clic by the updated one
-
 }
 
 
@@ -197,6 +197,7 @@ function load_data()
 				score = parseInt(obj.score);
 				timeSpent = parseInt(obj.tempsPasse);
 				nbClic = parseInt(obj.nbClic);
+				ameliorations = obj.ameliorations;
 				//update affichage
 				update();
 
@@ -225,17 +226,31 @@ function save_data()
 
 	xhttp.open("POST", "saveData.php", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("login=" + login +
+	xhttp.send(
+						"login=" + login +
 						"&score=" + score +
 						"&tempsPasse=" + timeSpent +
 						"&nbClic=" + nbClic
 					);
 }
 
+var x = document.getElementsByClassName("waifu");
+
+function unlock() {
+	Object.keys(ameliorations).forEach(function (item) {
+		if(score >= parseInt(ameliorations[item]['unlock']) ) {
+			var waifu = document.getElementById('autoclick'+ item);
+			waifu.getElementsByTagName('button')[0].classList.remove("disabled");
+		}
+		// faire pareille pour x 10 ici
+	});
+}
+
+
 // action every 1 second
 setInterval(save_data, 1000);
 setInterval(update, 1000);
-
+setInterval(unlock, 1000);
 
 /*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 | : 	|
