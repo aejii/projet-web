@@ -227,6 +227,7 @@ function save_data()
 
 // action every 1 second
 setInterval(save_data, 1000);
+setInterval(update, 1000);
 
 
 /*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
