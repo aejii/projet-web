@@ -3,7 +3,7 @@
 <html lang="fr">
 
 <head>
-    
+
     <title>Inscription</title>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
@@ -36,7 +36,7 @@
         }
 
         if (isset($_SESSION["pseudo"]))
-        {	
+        {
             ?>
                 <div class="container">
                     <div class="row">
@@ -87,7 +87,7 @@
                                     //mddp et confirmation mdp equal
                                     if ($_POST["mdp"] == $_POST["cmdp"]) {
                                         if (strlen($_POST["mdp"])>=7) {
-                                            
+
                                             $chemin = __DIR__."/Images/defaut.png";
                                             $cheminRel = "./Images/defaut.png";
                                             try
@@ -116,7 +116,7 @@
                                             "insciption" => $date->getTimestamp(),
                                             "image" => $cheminRel,
                                             "ip" => getRealIpAddr(),
-                                            "lienvalidation" => $validation, 
+                                            "lienvalidation" => $validation,
                                             "email" => $_POST["email"],
                                             "resetmdp" => ""
                                             ));
@@ -166,15 +166,15 @@
                             $erreur = "votre pseudo doit contenir seulement des caractères alphanumérique";
                             require "formulaireinscription.php";
                         }
-                        
+
                     }else{
                         $erreur = "votre pseudo doit contenir entre 4 et 100 caractères";
                         require "formulaireinscription.php";
                     }
-                    
+
                 }else{//inscription normal
                     require "formulaireinscription.php";
-                } 
+                }
             }
     ?>
     <?php require "script.php"; ?>

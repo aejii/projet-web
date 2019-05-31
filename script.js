@@ -73,6 +73,7 @@ function load_data()
 				timeSpent = parseInt(obj.tempsPasse);
 				nbClic = parseInt(obj.nbClic);
 				ameliorations = obj.ameliorations;
+				success = obj.success;
 
 				initialisation();
 				//update affichage
@@ -113,11 +114,11 @@ function save_data()
 }
 
 /*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-| unlock:	Unlock button if enough score point		|
+| unlock_ameliorations:	Unlock button if enough score point		|
 |																			|
 | returns:		void														|
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
-function unlock() {
+function unlock_ameliorations() {
 	Object.keys(ameliorations).forEach(function (item) {
 		var lvl = parseInt(ameliorations[item]['lvl']);
 		var lvlup = parseInt(ameliorations[item]['lvlup']);
@@ -220,10 +221,66 @@ function update_amelioration_display()
 	});
 }
 
+/*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+| unlock_succes:	Unlock achievements							|
+|																			|
+| returns:		void														|
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
+function unlock_succes()
+{
+	Object.keys(success).forEach(function (item) {
+		if(success[item]["type"] == "dps")
+		{
+			if(success[item]["nbdeblocage"] <= dpsTotal) {
+				save_success(item);
+				delete success[item];
+			}
+		}
+		else if(success[item]["type"] == "waifu") {
+			if(success[item]["nbdeblocage"] <= ameldebloq) {
+				save_success(item);
+				delete success[item];
+			}
+		}
+		else if(success[item]["type"] == "clic") {
+			if(success[item]["nbdeblocage"] <= nbClic) {
+				save_success(item);
+				delete success[item];
+			}
+		}
+		else {
+			// pas géré pour le moment
+		}
+	});
+}
+
+/*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+| save_success:	Save the unlocked success of the user											|
+|																			|
+| returns:		void														|
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
+function save_success(id)
+{
+	var xhttp = new XMLHttpRequest();
+	timeSpent++;
+	var stringAmel = JSON.stringify(ameliorations);
+	xhttp.onreadystatechange = function()
+	{
+		if (this.readyState == 4 && this.status == 200)
+		{
+			console.log(this.responseText);
+		}
+	};
+	xhttp.open("POST", "savedata.php", true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.send("successId=" + id);
+}
+
 // action every 1 second
 setInterval(save_data, 1000);
 setInterval(update, 1000);
-setInterval(unlock, 1000);
+setInterval(unlock_ameliorations, 1000);
+setInterval(unlock_succes, 1000);
 setInterval(function() {
 	score += dpsTotal;
 }, 1000);

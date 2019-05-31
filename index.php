@@ -176,7 +176,7 @@
         </div>
 
         <div id="center">
-            <span class="hearts" id="score" onchange="unlock()"></span><img id="heart" src="Images/heart.png"/>
+            <span class="hearts" id="score"></span><img id="heart" src="Images/heart.png"/>
             <img onselectstart="return false"
 							oncontextmenu="return false"
 							ondragstart="return false"

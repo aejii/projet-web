@@ -27,9 +27,18 @@ require "connection.php";
               "idAmel" => $key
           ));
         }
-        echo ("Sauvegarde Ok");
+        echo ("Sauvegarde données Ok");
     }
+
  }else{
-     echo("non connecté");
+   if(isset($_POST["successId"])) {
+     $req = $bdd->prepare("INSERT INTO joueurachiev (idjoueur, idAchiev, quand) VALUES (:idjoueur, :idAchiev, now())");
+     $req->execute(array(
+         "idjoueur" => 1,
+         "idAchiev" => $_POST["successId"]
+     ));
+     echo ("Sauvegarde succès Ok");
+   }
+     //echo("non connecté");
  }
 ?>
