@@ -13,7 +13,7 @@
     <link href="dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="style.css" />
-    
+
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="vendor/metisMenu/metisMenu.min.js"></script>
@@ -50,8 +50,8 @@
                 $pseudo = $donnees['pseudo'];// information static (non modifier en js)
                 $imggg = $donnees['image'];
             }
-    ?>    
-    
+    ?>
+
     <div class="row">
         <div id="infos">
             <div id="player">
@@ -68,32 +68,18 @@
 
             <div id="achievements">
                 <h1 id="achiTitle">Succès</h1>
-                <abbr title=" ~ Votre premiere waifu !"><img class="achievement" src="Images/achFirstLove.png" /></abbr>
-                <abbr title="Speedrunner ~ ClickClickClickClickClick 10 Click par secondes"><img class="achievement" src="Images/achSpeedrunner.png" /></abbr>
-                <abbr title="Premieres Lueures ~ "><img class="achievement" src="Images/achGotPoint.png" /></abbr>
-                <abbr title="Studying Hard ~ Vous avez fait la moitié du chemin"><img class="achievement" src="Images/achStudying.png" /></abbr>
-                <abbr title="Elementaliste ~ Puissance maximum."><img class="achievement" src="Images/achElementalist.png" /></abbr>
-                <abbr title="Force de la trinité ~ Des tonnes de dégats"><img class="achievement" src="Images/achTriforce.png" /></abbr>
-                <abbr title="100% ~ Vous avez obtenu tous les succes !"><img class="achievement" src="Images/ach100.png" /></abbr>
-                <abbr title="100% ~ Vous avez atteint 1000 DPS"><img class="achievement" src="Images/emptyAchievement.png" /></abbr>
-                <abbr title="100% ~ Vous avez atteint 1M DPS"><img class="achievement" src="Images/emptyAchievement.png" /></abbr>
-                <abbr title="100% ~ Vous avez atteint 1B DPS"><img class="achievement" src="Images/emptyAchievement.png" /></abbr>
-                <abbr title="100% ~ Vous avez atteint 1T DPS"><img class="achievement" src="Images/emptyAchievement.png" /></abbr>
-                <abbr title="100% ~ Vous avez atteint 1Q DPS"><img class="achievement" src="Images/emptyAchievement.png" /></abbr>
-                <abbr title="100% ~ You got all achievements !"><img class="secretAchievement" src="Images/achElementalist.png" /></abbr>
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
+								<?php
+										$req = $bdd->prepare("SELECT idAchiev, nom, type, nbdeblocage, img FROM achievement");
+										$req->execute();
+										$donnees = $req->fetch();
+										while ($donnees = $req->fetch()){
+												?>
+														<abbr id="achiev<?php echo $donnees['idAchiev']; ?>" title="<?php echo $donnees['nom']; ?>">
+															<img class="achievement" src="<?php echo $donnees['img']; ?>" />
+														</abbr>
+												<?php
+										}
+								?>
 
             </div>
             <br/>
@@ -113,7 +99,7 @@
                     <?php
                         $req = $bdd->prepare("SELECT idAmel, nom, baseDamage, coinsforlvlup, coinsforunlock, imageLink FROM amelioration");
                         $req->execute();
-                        $donnees = $req->fetch();   
+                        $donnees = $req->fetch();
                         while ($donnees = $req->fetch()){
                             ?>
                                 <div id="autoclick<?php echo $donnees['idAmel']; ?>" class="waifu">
@@ -126,11 +112,11 @@
                         }
                     ?>
                 </div>
-            
-               
-            
-            
-                <div id="upgrades3" class="tab-pane fade">    
+
+
+
+
+                <div id="upgrades3" class="tab-pane fade">
                 <h1 id="waifuT">Labo de recherche</h1>
                     <div class="research">
                         <img class="iconImage" src="Images/resClic.jpg" /><div class="waifuName"> Optimisation des clics </div><div class="upgLevel">Lv.1</div><br/>
@@ -144,17 +130,17 @@
                         Effet : Augmente les dégats des clics proportionelement au DPS total des Waifus.<br/>
                         +1% du DPS<br/>
                         <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 10k <img id="tinyHeart" src="Images/heart.png"/>
-                    </div>   
+                    </div>
                     <br/>
                     <div class="research">
                         <img class="iconImage" src="Images/resTrainer.png" /><div class="waifuName"> Entraîneur </div><div class="upgLevel">Lv.1</div><br/>
                         Effet : Augmente periodiquement le niveau d'une Waifu <br/>
                         10 min entre chaque amélioration<br/>
                         <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 1M <img id="tinyHeart" src="Images/heart.png"/>
-                    </div>  
+                    </div>
                     <br/>
                 </div>
-        
+
             </div>
 
         </div>
