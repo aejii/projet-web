@@ -5,6 +5,8 @@ var timeSpent = 0;
 var nbClic = 0;
 var ameliorations = {};
 var dpsTotal = 0;
+var ameldebloq = 0;
+var nvglobal = 0;
 
 load_data();
 /*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -18,6 +20,8 @@ function update()
 	document.getElementById("tempsPasse").innerHTML = timeSpent +"s"; //Replaces the displayed time spent by the updated one
 	document.getElementById("nbClic").innerHTML = nbClic; //Replaces the displayed nb of clic by the updated one
 	document.getElementById("dpsTotal").innerHTML = dpsTotal; //Replaces the displayed nb of total dps by the updated one
+	document.getElementById("nvglobal").innerHTML = nvglobal;
+	document.getElementById("ameldebloq").innerHTML = ameldebloq;
 }
 
 
@@ -64,12 +68,12 @@ function load_data()
 				var obj = JSON.parse(xhr.responseText);
 
 				login = obj.login;
-				score = parseInt(obj.score);
+				score = parseFloat(obj.score);
 				timeSpent = parseInt(obj.tempsPasse);
 				nbClic = parseInt(obj.nbClic);
 				ameliorations = obj.ameliorations;
 
-				dps_total_initialisation();
+				initialisation();
 				//update affichage
 				update();
 
@@ -167,20 +171,28 @@ function upgrade(amelioration, times) {
 	cout.innerHTML = nextlvlcost;
 	ameliorations[amelioration]['lvl'] = lvl + times;
 	score -= lvlcost;
-	dpsTotal += parseInt(baseDmg*times);
+	dpsTotal += parseFloat(baseDmg*times);
+	nvglobal += times;
+	if(lvl == 0 ) {
+		ameldebloq++;
+	}
 
 }
 /*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-| dps_total_initialisation:	Initialize the total damages per second	|
+| initialisation:	Initialize amelioration relate value for first display	|
 |																			|
 | returns:		void														|
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
-function dps_total_initialisation()
+function initialisation()
 {
 	Object.keys(ameliorations).forEach(function (item) {
 		var lvl = parseInt(ameliorations[item]['lvl']);
 		var baseDmg = parseInt(ameliorations[item]['basedmg']);
 		dpsTotal+= baseDmg * lvl;
+		nvglobal += lvl;
+		if(lvl > 0 ) {
+			ameldebloq++;
+		}
 	});
 }
 
