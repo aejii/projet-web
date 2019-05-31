@@ -18,7 +18,6 @@ function update()
 	document.getElementById("tempsPasse").innerHTML = timeSpent +"s"; //Replaces the displayed time spent by the updated one
 	document.getElementById("nbClic").innerHTML = nbClic; //Replaces the displayed nb of clic by the updated one
 	document.getElementById("dpsTotal").innerHTML = dpsTotal; //Replaces the displayed nb of total dps by the updated one
-	score += dpsTotal;
 }
 
 
@@ -31,7 +30,7 @@ function update()
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
 function increase_score(value)
 {
-	score += paresInt(value);		//Adds the given value to the score
+	score += value;		//Adds the given value to the score
 	update();			//Updates the display of the score
 }
 
@@ -188,6 +187,9 @@ function dps_total_initialisation()
 setInterval(save_data, 1000);
 setInterval(update, 1000);
 setInterval(unlock, 1000);
+setInterval(function() {
+	score += dpsTotal;
+}, 1000);
 
 /*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 | : 	|
