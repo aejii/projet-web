@@ -138,6 +138,10 @@
                                                     "idAmel" => $donnees['idAmel']
                                                 ));
                                             }
+                                            $req2 = $bdd->prepare("INSERT INTO joueurachiev (`idjoueur`,`idAchiev`) VALUES (:idjoueur,15)");
+                                                $req2->execute(array(
+                                                    "idjoueur" => $idjoueur
+                                                ));
                                             ?>
                                                 <div class="container">
                                                     <div class="row">
