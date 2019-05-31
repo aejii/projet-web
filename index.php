@@ -69,18 +69,31 @@
 
             <div id="achievements">
                 <h1 id="achiTitle">Succès</h1>
-								<?php
-										$req = $bdd->prepare("SELECT idAchiev, nom, type, nbdeblocage, img FROM achievement");
-										$req->execute();
-										while ($donnees = $req->fetch()){
-												?>
-														<abbr id="achiev<?php echo $donnees['idAchiev']; ?>" title="<?php echo $donnees['nom']; ?>">
-															<img class="achievement" src="<?php echo $donnees['img']; ?>" />
-														</abbr>
-												<?php
-										}
-								?>
-
+                    <?php
+                        $req = $bdd->prepare("select idAchiev from achievement");
+                        $req->execute();
+                        while ($donnees = $req->fetch()){
+                            $req2 = $bdd->prepare("SELECT idjoueur, joueurachiev.idAchiev as idAchiev2, quand, nom, imageLink FROM joueurachiev join achievement on joueurachiev.idAchiev = achievement.idAchiev WHERE idjoueur=:idjoueur and joueurachiev.idAchiev=:idAchiev");
+                            $req2->execute(array(
+                                "idjoueur" => $_SESSION['ID'],
+                                "idAchiev" => $donnees['idAchiev']
+                            ));
+                            $donnees2 = $req2->fetch();
+                            if ($donnees2) {
+                                ?>
+                                    <abbr id="achiev<?php echo $donnees2['idAchiev2']; ?>" title="<?php echo $donnees2['nom']; ?>">
+                                        <img class="achievement" src="<?php echo $donnees2['imageLink']; ?>" />
+                                    </abbr>
+                                <?php
+                            }else{
+                                ?>
+                                    <abbr id="achiev<?php echo $donnees['idAchiev']; ?>" title="<?php echo("извините это завершение заблокировано"); ?>">
+                                        <img class="achievement" src="<?php echo("Images/emptyAchievement.png") ?>" />
+                                    </abbr>
+                                <?php
+                            }
+                        }
+                    ?>
             </div>
             <br/>
 
