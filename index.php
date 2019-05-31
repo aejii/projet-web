@@ -73,7 +73,7 @@
                         $req = $bdd->prepare("select idAchiev from achievement");
                         $req->execute();
                         while ($donnees = $req->fetch()){
-                            $req2 = $bdd->prepare("SELECT idjoueur, joueurachiev.idAchiev as idAchiev2, quand, nom, imageLink FROM joueurachiev join achievement on joueurachiev.idAchiev = achievement.idAchiev WHERE idjoueur=:idjoueur and joueurachiev.idAchiev=:idAchiev");
+                            $req2 = $bdd->prepare("SELECT idjoueur,description, joueurachiev.idAchiev as idAchiev2, quand, nom, imageLink FROM joueurachiev join achievement on joueurachiev.idAchiev = achievement.idAchiev WHERE idjoueur=:idjoueur and joueurachiev.idAchiev=:idAchiev");
                             $req2->execute(array(
                                 "idjoueur" => $_SESSION['ID'],
                                 "idAchiev" => $donnees['idAchiev']
@@ -109,14 +109,32 @@
                         $req = $bdd->prepare("SELECT idAmel, nom, baseDamage, coinsforlvlup, coinsforunlock, imageLink FROM amelioration");
                         $req->execute();
                         while ($donnees = $req->fetch()){
-                            ?>
-                                <div id="autoclick<?php echo $donnees['idAmel']; ?>" class="waifu">
-                                    <img class="iconImage" src="<?php echo $donnees['imageLink']; ?>" /><div class="waifuName"> <?php echo $donnees['nom']; ?> </div><div class="upgLevel">Lv.1</div>
-                                    <div class="damages">DPS: 0 (Suivant : +<?php echo $donnees['baseDamage']; ?>)</div><br/>
-                                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : <?php echo $donnees['coinsforlvlup']; ?> <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                                </div>
-                                <br/>
-                            <?php
+                            $req2 = $bdd->prepare("SELECT idjoueur, joueuramel.idAmel as idAmel2, level FROM joueuramel join amelioration on joueuramel.idAmel = amelioration.idAmel WHERE idjoueur=:idjoueur and joueuramel.idAmel=:idAmel");
+                            $req2->execute(array(
+                                "idjoueur" => $_SESSION['ID'],
+                                "idAmel" => $donnees['idAmel']
+                            ));
+                            $donnees2 = $req2->fetch();
+                            if($donnees2['level']==0){
+                                ?>
+                                    <div id="autoclick<?php echo $donnees['idAmel']; ?>" class="waifu locked">
+                                        <img class="iconImage" src="<?php echo $donnees['imageLink']; ?>" /><div class="waifuName"> <?php echo $donnees['nom']; ?> </div><div class="upgLevel">Lv.<?php echo $donnees2['level'] ?></div>
+                                        <div class="damages">DPS: 0 (Suivant : +<?php echo $donnees['baseDamage']; ?>)</div><br/>
+                                        <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : <?php echo $donnees['coinsforlvlup']; ?> <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
+                                    </div>
+                                    <br/>
+                                <?php
+                            }else{
+                                ?>
+                                    <div id="autoclick<?php echo $donnees['idAmel']; ?>" class="waifu">
+                                        <img class="iconImage" src="<?php echo $donnees['imageLink']; ?>" /><div class="waifuName"> <?php echo $donnees['nom']; ?> </div><div class="upgLevel">Lv.<?php echo $donnees2['level'] ?></div>
+                                        <div class="damages">DPS: 0 (Suivant : +<?php echo $donnees['baseDamage']; ?>)</div><br/>
+                                        <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : <?php echo $donnees['coinsforlvlup']; ?> <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
+                                    </div>
+                                    <br/>
+                                <?php
+                            }
+                            
                         }
                     ?>
                 </div>
