@@ -72,7 +72,6 @@
 								<?php
 										$req = $bdd->prepare("SELECT idAchiev, nom, type, nbdeblocage, img FROM achievement");
 										$req->execute();
-										$donnees = $req->fetch();
 										while ($donnees = $req->fetch()){
 												?>
 														<abbr id="achiev<?php echo $donnees['idAchiev']; ?>" title="<?php echo $donnees['nom']; ?>">
@@ -100,7 +99,6 @@
                     <?php
                         $req = $bdd->prepare("SELECT idAmel, nom, baseDamage, coinsforlvlup, coinsforunlock, imageLink FROM amelioration");
                         $req->execute();
-                        $donnees = $req->fetch();
                         while ($donnees = $req->fetch()){
                             ?>
                                 <div id="autoclick<?php echo $donnees['idAmel']; ?>" class="waifu">
