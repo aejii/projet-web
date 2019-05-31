@@ -194,6 +194,7 @@ color:rgb(0, 102, 255)
     width: 80%;
     margin: 0 auto 0 auto;
     border-radius: 10px;
+    padding: 10px 10px 10px 10px;
 }
 
 .locked {
@@ -217,6 +218,9 @@ color:rgb(0, 102, 255)
     width: 20px;
 }
 
+.btn-lvlup{
+    border: 1px solid black;
+}
 
 /* LUX */
 
@@ -246,6 +250,7 @@ color:rgb(0, 102, 255)
     width: 80%;
     margin: 0 auto 0 auto;
     border-radius: 10px;
+    padding: 10px 10px 10px 10px;
 }
 
 /* CENTER */
