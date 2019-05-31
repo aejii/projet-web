@@ -116,7 +116,7 @@
                             ));
                             $donnees2 = $req2->fetch();
                             ?>
-                            <div id="autoclickamel<?php echo $donnees['idAmel']; ?>"
+                            <div id="autoclick<?php echo $donnees['idAmel']; ?>"
 															 class="waifu <?php if($donnees2['level']==0) echo "locked"; ?>">
 																<img class="iconImage" src="<?php echo $donnees['imageLink']; ?>" />
 																<div class="waifuName"> <?php echo $donnees['nom']; ?> </div>

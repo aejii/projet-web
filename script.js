@@ -63,7 +63,7 @@ function load_data()
 				console.log("onreadystatechange : "+xhr.responseText);
 				var obj = JSON.parse(xhr.responseText);
 
-				login = parseInt(obj.login);
+				login = obj.login;
 				score = parseInt(obj.score);
 				timeSpent = parseInt(obj.tempsPasse);
 				nbClic = parseInt(obj.nbClic);
@@ -88,6 +88,7 @@ function save_data()
 {
 	var xhttp = new XMLHttpRequest();
 	timeSpent++;
+	var stringAmel = JSON.stringify(ameliorations);
 	xhttp.onreadystatechange = function()
 	{
 		if (this.readyState == 4 && this.status == 200)
@@ -95,14 +96,14 @@ function save_data()
 			console.log(this.responseText);
 		}
 	};
-
-	xhttp.open("POST", "saveData.php", true);
+	xhttp.open("POST", "savedata.php", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send(
 						"login=" + login +
 						"&score=" + score +
 						"&tempsPasse=" + timeSpent +
-						"&nbClic=" + nbClic
+						"&nbClic=" + nbClic +
+						"&ameliorations=" + stringAmel
 					);
 }
 
@@ -153,18 +154,18 @@ function unlock() {
 | returns:		void														|
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
 function upgrade(amelioration, times) {
-	var lvl = parseInt(ameliorations['amel'+amelioration]['lvl']);
-	var lvlup = parseInt(ameliorations['amel'+amelioration]['lvlup']);
+	var lvl = parseInt(ameliorations[amelioration]['lvl']);
+	var lvlup = parseInt(ameliorations[amelioration]['lvlup']);
 	var lvlcost = Math.floor(lvlup* Math.pow(1.1, (lvl)));
 	var nextlvlcost = Math.floor(lvlup* Math.pow(1.1, (lvl+times)));
-	var baseDmg = ameliorations['amel'+amelioration]['basedmg'];
+	var baseDmg = ameliorations[amelioration]['basedmg'];
 	var upg = document.getElementById("upg" + amelioration);
 	upg.innerHTML = lvl+times;
 	var dps = document.getElementById("dps" + amelioration);
 	dps.innerHTML = baseDmg * (lvl+times);
 	var cout = document.getElementById("cout" + amelioration);
 	cout.innerHTML = nextlvlcost;
-	ameliorations['amel'+amelioration]['lvl'] = lvl + times;
+	ameliorations[amelioration]['lvl'] = lvl + times;
 	score -= lvlcost;
 	dpsTotal += parseInt(baseDmg*times);
 
