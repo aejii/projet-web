@@ -240,6 +240,7 @@ function unlock() {
 	Object.keys(ameliorations).forEach(function (item) {
 		if(score >= parseInt(ameliorations[item]['unlock']) ) {
 			var waifu = document.getElementById('autoclick'+ item);
+			waifu.classList.remove("locked");
 			waifu.getElementsByTagName('button')[0].classList.remove("disabled");
 		}
 		// faire pareille pour x 10 ici
