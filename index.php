@@ -81,15 +81,11 @@
                             $donnees2 = $req2->fetch();
                             if ($donnees2) {
                                 ?>
-                                    <abbr id="achiev<?php echo $donnees2['idAchiev2']; ?>" title="<?php echo $donnees2['nom']; ?>">
-                                        <img class="achievement" src="<?php echo $donnees2['imageLink']; ?>" />
-                                    </abbr>
+                                <a id="achiev<?php echo $donnees2['idAchiev2']; ?>"  href="#" title="<?php echo $donnees2['nom']; ?>" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo $donnees2['description']; ?>"><img class="achievement" src="<?php echo $donnees2['imageLink']; ?>" /></a>
                                 <?php
                             }else{
                                 ?>
-                                    <abbr id="achiev<?php echo $donnees['idAchiev']; ?>" title="<?php echo("извините это завершение заблокировано"); ?>">
-                                        <img class="achievement" src="<?php echo("Images/emptyAchievement.png") ?>" />
-                                    </abbr>
+                                    <a id="achiev<?php echo $donnees['idAchiev']; ?>"  href="#" title="<?php echo("Succès non débloqué"); ?>" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo("Mystère..."); ?>"><img class="achievement" src="Images/emptyAchievement.png" /></a>
                                 <?php
                             }
                         }
@@ -165,6 +161,13 @@
             }
         ?>
     <div>
+
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();   
+        });
+    </script>
+
 </body>
 
 </html>
