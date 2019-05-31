@@ -81,11 +81,11 @@
                             $donnees2 = $req2->fetch();
                             if ($donnees2) {
                                 ?>
-                                <a id="achiev<?php echo $donnees2['idAchiev2']; ?>"  href="#" title="<?php echo $donnees2['nom']; ?>" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo $donnees2['description']; ?>"><img class="achievement" src="<?php echo $donnees2['imageLink']; ?>" /></a>
+                                <a id="achiev<?php echo $donnees2['idAchiev2']; ?>"  href="#" title="<?php echo $donnees2['nom']; ?>" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo $donnees2['description']; echo(" (Obtenu le : ");echo $donnees2['quand'];echo(")"); ?>"><img class="achievement" src="<?php echo $donnees2['imageLink']; ?>" /></a>
                                 <?php
                             }else{
                                 ?>
-                                    <a id="achiev<?php echo $donnees['idAchiev']; ?>"  href="#" title="<?php echo("Succès non débloqué"); ?>" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo("Mystère..."); ?>"><img class="achievement" src="Images/emptyAchievement.png" /></a>
+                                    <a id="achiev<?php echo $donnees['idAchiev']; ?>"  href="#" title="<?php echo("Succès non débloqué"); ?>" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo("Mystère...");?>"><img class="achievement" src="Images/emptyAchievement.png" /></a>
                                 <?php
                             }
                         }
