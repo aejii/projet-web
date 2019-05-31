@@ -120,7 +120,7 @@
                                     <div id="autoclick<?php echo $donnees['idAmel']; ?>" class="waifu locked">
                                         <img class="iconImage" src="<?php echo $donnees['imageLink']; ?>" /><div class="waifuName"> <?php echo $donnees['nom']; ?> </div><div class="upgLevel">Lv.<?php echo $donnees2['level'] ?></div>
                                         <div class="damages">DPS: 0 (Suivant : +<?php echo $donnees['baseDamage']; ?>)</div><br/>
-                                        <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : <?php echo $donnees['coinsforlvlup']; ?> <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
+                                        <button type="button" class="btn btn-lvlup disabled">NIVEAU SUP. !</button> Coût : <?php echo $donnees['coinsforlvlup']; ?> <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup disabled">x10</button>
                                     </div>
                                     <br/>
                                 <?php
