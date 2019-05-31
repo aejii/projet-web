@@ -13,7 +13,7 @@
     <link href="dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="style.css" />
-    
+
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="vendor/metisMenu/metisMenu.min.js"></script>
@@ -41,7 +41,7 @@
         }
         else{
             require "connection.php";
-            $req = $bdd->prepare("SELECT id, pseudo, inscription, image, role, coins, nbClic, tempsPasse, ennemiestuees FROM utilisateurs WHERE id=:id");
+            $req = $bdd->prepare("SELECT id, pseudo, inscription, image, role, coins, nbClic, tempsPasse FROM utilisateurs WHERE id=:id");
             $req->execute(array(
                 "id" => $_SESSION["ID"]
             ));
@@ -50,8 +50,8 @@
                 $pseudo = $donnees['pseudo'];// information static (non modifier en js)
                 $imggg = $donnees['image'];
             }
-    ?>    
-    
+    ?>
+
     <div class="row">
         <div id="infos">
             <div id="player">
@@ -60,29 +60,36 @@
             </div>
 
             <div id="scores"><div class="score"><strong>Dps Total : </strong>0</div>
+								<div class="score"><strong>Nombre de clics : </strong><span id="nbClic"></span></div>
                 <div class="score"><strong>Dégats par clic : </strong>1</div>
                 <div class="score"><strong>Niveau global : </strong>0</div>
                 <div class="score"><strong>Améliorations débloquées : </strong>0/20</div>
-                <div class="score"><strong>Temps de jeu : </strong>10m</div>
+                <div class="score"><strong>Temps de jeu : </strong><span id="tempsPasse"></span></div>
             </div>
 
             <div id="achievements">
                 <h1 id="achiTitle">Succès</h1>
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
-                <img class="achievement" src="Images/emptyAchievement.png" />
+                    <?php
+                        $req = $bdd->prepare("select idAchiev from achievement");
+                        $req->execute();
+                        while ($donnees = $req->fetch()){
+                            $req2 = $bdd->prepare("SELECT idjoueur,description, joueurachiev.idAchiev as idAchiev2, quand, nom, imageLink FROM joueurachiev join achievement on joueurachiev.idAchiev = achievement.idAchiev WHERE idjoueur=:idjoueur and joueurachiev.idAchiev=:idAchiev");
+                            $req2->execute(array(
+                                "idjoueur" => $_SESSION['ID'],
+                                "idAchiev" => $donnees['idAchiev']
+                            ));
+                            $donnees2 = $req2->fetch();
+                            if ($donnees2) {
+                                ?>
+                                <a id="achiev<?php echo $donnees2['idAchiev2']; ?>"  href="#" title="<?php echo $donnees2['nom']; ?>" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo $donnees2['description']; ?>"><img class="achievement" src="<?php echo $donnees2['imageLink']; ?>" /></a>
+                                <?php
+                            }else{
+                                ?>
+                                    <a id="achiev<?php echo $donnees['idAchiev']; ?>"  href="#" title="<?php echo("Succès non débloqué"); ?>" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo("Mystère..."); ?>"><img class="achievement" src="Images/emptyAchievement.png" /></a>
+                                <?php
+                            }
+                        }
+                    ?>
             </div>
             <br/>
 
@@ -101,24 +108,40 @@
                     <?php
                         $req = $bdd->prepare("SELECT idAmel, nom, baseDamage, coinsforlvlup, coinsforunlock, imageLink FROM amelioration");
                         $req->execute();
-                        $donnees = $req->fetch();   
                         while ($donnees = $req->fetch()){
-                            ?>
-                                <div id="autoclick<?php echo $donnees['idAmel']; ?>" class="waifu locked">
-                                    <img class="iconImage" src="<?php echo $donnees['imageLink']; ?>" /><div class="waifuName"> <?php echo $donnees['nom']; ?> </div><div class="upgLevel">Lv.1</div>
-                                    <div class="damages">DPS: 0 (Suivant : +<?php echo $donnees['baseDamage']; ?>)</div><br/>
-                                    <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : <?php echo $donnees['coinsforlvlup']; ?> <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                                </div>
-                                <br/>
-                            <?php
+                            $req2 = $bdd->prepare("SELECT idjoueur, joueuramel.idAmel as idAmel2, level FROM joueuramel join amelioration on joueuramel.idAmel = amelioration.idAmel WHERE idjoueur=:idjoueur and joueuramel.idAmel=:idAmel");
+                            $req2->execute(array(
+                                "idjoueur" => $_SESSION['ID'],
+                                "idAmel" => $donnees['idAmel']
+                            ));
+                            $donnees2 = $req2->fetch();
+                            if($donnees2['level']==0){
+                                ?>
+                                    <div id="autoclick<?php echo $donnees['idAmel']; ?>" class="waifu locked">
+                                        <img class="iconImage" src="<?php echo $donnees['imageLink']; ?>" /><div class="waifuName"> <?php echo $donnees['nom']; ?> </div><div class="upgLevel">Lv.<?php echo $donnees2['level'] ?></div>
+                                        <div class="damages">DPS: 0 (Suivant : +<?php echo $donnees['baseDamage']; ?>)</div><br/>
+                                        <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : <?php echo $donnees['coinsforlvlup']; ?> <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
+                                    </div>
+                                    <br/>
+                                <?php
+                            }else{
+                                ?>
+                                    <div id="autoclick<?php echo $donnees['idAmel']; ?>" class="waifu">
+                                        <img class="iconImage" src="<?php echo $donnees['imageLink']; ?>" /><div class="waifuName"> <?php echo $donnees['nom']; ?> </div><div class="upgLevel">Lv.<?php echo $donnees2['level'] ?></div>
+                                        <div class="damages">DPS: 0 (Suivant : +<?php echo $donnees['baseDamage']; ?>)</div><br/>
+                                        <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : <?php echo $donnees['coinsforlvlup']; ?> <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
+                                    </div>
+                                    <br/>
+                                <?php
+                            }
                         }
                     ?>
                 </div>
-            
-               
-            
-            
-                <div id="upgrades3" class="tab-pane fade">    
+
+
+
+
+                <div id="upgrades3" class="tab-pane fade">
                 <h1 id="waifuT">Labo de recherche</h1>
                     <div class="research">
                         <img class="iconImage" src="Images/resClic.jpg" /><div class="waifuName"> Optimisation des clics </div><div class="upgLevel">Lv.1</div><br/>
@@ -132,29 +155,36 @@
                         Effet : Augmente les dégats des clics proportionelement au DPS total des Waifus.<br/>
                         +1% du DPS<br/>
                         <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 10k <img id="tinyHeart" src="Images/heart.png"/>
-                    </div>   
+                    </div>
                     <br/>
                     <div class="research">
                         <img class="iconImage" src="Images/resTrainer.png" /><div class="waifuName"> Entraîneur </div><div class="upgLevel">Lv.1</div><br/>
                         Effet : Augmente periodiquement le niveau d'une Waifu <br/>
                         10 min entre chaque amélioration<br/>
                         <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : 1M <img id="tinyHeart" src="Images/heart.png"/>
-                    </div>  
+                    </div>
                     <br/>
                 </div>
-        
+
             </div>
 
         </div>
 
         <div id="center">
-            <span class="hearts" id="score">0</span><img id="heart" src="Images/heart.png"/>
+            <span class="hearts" id="score"></span><img id="heart" src="Images/heart.png"/>
             <img onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;" id="clicMe" class="pulse" src="Images/logoRond.png" onclick="hit()" />
         </div>
         <?php
             }
         ?>
     <div>
+
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();   
+        });
+    </script>
+
 </body>
 
 </html>
