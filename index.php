@@ -68,19 +68,6 @@
 
             <div id="achievements">
                 <h1 id="achiTitle">Succès</h1>
-                <abbr title=" ~ Votre premiere waifu !"><img class="achievement" src="Images/achFirstLove.png" /></abbr>
-                <abbr title="Speedrunner ~ ClickClickClickClickClick 10 Click par secondes"><img class="achievement" src="Images/achSpeedrunner.png" /></abbr>
-                <abbr title="Premieres Lueures ~ "><img class="achievement" src="Images/achGotPoint.png" /></abbr>
-                <abbr title="Studying Hard ~ Vous avez fait la moitié du chemin"><img class="achievement" src="Images/achStudying.png" /></abbr>
-                <abbr title="Elementaliste ~ Puissance maximum."><img class="achievement" src="Images/achElementalist.png" /></abbr>
-                <abbr title="Force de la trinité ~ Des tonnes de dégats"><img class="achievement" src="Images/achTriforce.png" /></abbr>
-                <abbr title="100% ~ Vous avez obtenu tous les succes !"><img class="achievement" src="Images/ach100.png" /></abbr>
-                <abbr title="100% ~ Vous avez atteint 1000 DPS"><img class="achievement" src="Images/emptyAchievement.png" /></abbr>
-                <abbr title="100% ~ Vous avez atteint 1M DPS"><img class="achievement" src="Images/emptyAchievement.png" /></abbr>
-                <abbr title="100% ~ Vous avez atteint 1B DPS"><img class="achievement" src="Images/emptyAchievement.png" /></abbr>
-                <abbr title="100% ~ Vous avez atteint 1T DPS"><img class="achievement" src="Images/emptyAchievement.png" /></abbr>
-                <abbr title="100% ~ Vous avez atteint 1Q DPS"><img class="achievement" src="Images/emptyAchievement.png" /></abbr>
-                <abbr title="100% ~ You got all achievements !"><img class="secretAchievement" src="Images/achElementalist.png" /></abbr>
                 <img class="achievement" src="Images/emptyAchievement.png" />
                 <img class="achievement" src="Images/emptyAchievement.png" />
                 <img class="achievement" src="Images/emptyAchievement.png" />
@@ -94,7 +81,8 @@
                 <img class="achievement" src="Images/emptyAchievement.png" />
                 <img class="achievement" src="Images/emptyAchievement.png" />
                 <img class="achievement" src="Images/emptyAchievement.png" />
-
+                <img class="achievement" src="Images/emptyAchievement.png" />
+                <img class="achievement" src="Images/emptyAchievement.png" />
             </div>
             <br/>
 
@@ -116,7 +104,7 @@
                         $donnees = $req->fetch();   
                         while ($donnees = $req->fetch()){
                             ?>
-                                <div id="autoclick<?php echo $donnees['idAmel']; ?>" class="waifu">
+                                <div id="autoclick<?php echo $donnees['idAmel']; ?>" class="waifu locked">
                                     <img class="iconImage" src="<?php echo $donnees['imageLink']; ?>" /><div class="waifuName"> <?php echo $donnees['nom']; ?> </div><div class="upgLevel">Lv.1</div>
                                     <div class="damages">DPS: 0 (Suivant : +<?php echo $donnees['baseDamage']; ?>)</div><br/>
                                     <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : <?php echo $donnees['coinsforlvlup']; ?> <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
