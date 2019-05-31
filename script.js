@@ -5,6 +5,8 @@ var timeSpent = 0;
 var nbClic = 0;
 var ameliorations = {};
 var dpsTotal = 0;
+var ameldebloq = 0;
+var nvglobal = 0;
 
 load_data();
 /*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -18,6 +20,9 @@ function update()
 	document.getElementById("tempsPasse").innerHTML = timeSpent +"s"; //Replaces the displayed time spent by the updated one
 	document.getElementById("nbClic").innerHTML = nbClic; //Replaces the displayed nb of clic by the updated one
 	document.getElementById("dpsTotal").innerHTML = dpsTotal; //Replaces the displayed nb of total dps by the updated one
+	document.getElementById("nvglobal").innerHTML = nvglobal;
+	document.getElementById("ameldebloq").innerHTML = ameldebloq;
+	update_amelioration_display();
 }
 
 
@@ -63,13 +68,13 @@ function load_data()
 				console.log("onreadystatechange : "+xhr.responseText);
 				var obj = JSON.parse(xhr.responseText);
 
-				login = parseInt(obj.login);
-				score = parseInt(obj.score);
+				login = obj.login;
+				score = parseFloat(obj.score);
 				timeSpent = parseInt(obj.tempsPasse);
 				nbClic = parseInt(obj.nbClic);
 				ameliorations = obj.ameliorations;
 
-				dps_total_initialisation();
+				initialisation();
 				//update affichage
 				update();
 
@@ -88,6 +93,7 @@ function save_data()
 {
 	var xhttp = new XMLHttpRequest();
 	timeSpent++;
+	var stringAmel = JSON.stringify(ameliorations);
 	xhttp.onreadystatechange = function()
 	{
 		if (this.readyState == 4 && this.status == 200)
@@ -95,14 +101,14 @@ function save_data()
 			console.log(this.responseText);
 		}
 	};
-
-	xhttp.open("POST", "saveData.php", true);
+	xhttp.open("POST", "savedata.php", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send(
 						"login=" + login +
 						"&score=" + score +
 						"&tempsPasse=" + timeSpent +
-						"&nbClic=" + nbClic
+						"&nbClic=" + nbClic +
+						"&ameliorations=" + stringAmel
 					);
 }
 
@@ -152,34 +158,65 @@ function unlock() {
 |																			|
 | returns:		void														|
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
-function upgrade(amelioration, times) {
-	var lvl = parseInt(ameliorations['amel'+amelioration]['lvl']);
-	var lvlup = parseInt(ameliorations['amel'+amelioration]['lvlup']);
+function upgrade(item, times) {
+	var lvl = parseInt(ameliorations[item]['lvl']);
+	var lvlup = parseInt(ameliorations[item]['lvlup']);
 	var lvlcost = Math.floor(lvlup* Math.pow(1.1, (lvl)));
 	var nextlvlcost = Math.floor(lvlup* Math.pow(1.1, (lvl+times)));
-	var baseDmg = ameliorations['amel'+amelioration]['basedmg'];
-	var upg = document.getElementById("upg" + amelioration);
+	var baseDmg = ameliorations[item]['basedmg'];
+	var upg = document.getElementById("upg" + item);
 	upg.innerHTML = lvl+times;
-	var dps = document.getElementById("dps" + amelioration);
+	var dps = document.getElementById("dps" + item);
 	dps.innerHTML = baseDmg * (lvl+times);
-	var cout = document.getElementById("cout" + amelioration);
+	var cout = document.getElementById("cout" + item);
 	cout.innerHTML = nextlvlcost;
-	ameliorations['amel'+amelioration]['lvl'] = lvl + times;
+	ameliorations[item]['lvl'] = lvl + times;
 	score -= lvlcost;
-	dpsTotal += parseInt(baseDmg*times);
+	dpsTotal += parseFloat(baseDmg*times);
+	nvglobal += times;
+	if(lvl == 0 ) {
+		ameldebloq++;
+	}
 
 }
 /*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-| dps_total_initialisation:	Initialize the total damages per second	|
+| initialisation:	Initialize amelioration relate value for first display	|
 |																			|
 | returns:		void														|
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
-function dps_total_initialisation()
+function initialisation()
 {
 	Object.keys(ameliorations).forEach(function (item) {
 		var lvl = parseInt(ameliorations[item]['lvl']);
 		var baseDmg = parseInt(ameliorations[item]['basedmg']);
 		dpsTotal+= baseDmg * lvl;
+		nvglobal += lvl;
+		if(lvl > 0 ) {
+			ameldebloq++;
+		}
+	});
+}
+
+/*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+| update_amelioration_display:	Update amelioration display									|
+|																			|
+| returns:		void														|
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
+function update_amelioration_display()
+{
+	Object.keys(ameliorations).forEach(function (item) {
+		var lvl = parseInt(ameliorations[item]['lvl']);
+		var lvlup = parseInt(ameliorations[item]['lvlup']);
+		var lvlcost = Math.floor(lvlup* Math.pow(1.1, (lvl)));
+
+		var baseDmg = ameliorations[item]['basedmg'];
+		var upg = document.getElementById("upg" + item);
+		upg.innerHTML = lvl;
+		var dps = document.getElementById("dps" + item);
+		dps.innerHTML = baseDmg * (lvl);
+		var cout = document.getElementById("cout" + item);
+		cout.innerHTML = lvlcost;
+		ameliorations[item]['lvl'] = lvl;
 	});
 }
 

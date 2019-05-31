@@ -61,9 +61,9 @@
 
             <div id="scores"><div class="score"><strong>Dps Total : </strong><span id="dpsTotal"></span></div>
 								<div class="score"><strong>Nombre de clics : </strong><span id="nbClic"></span></div>
-                <div class="score"><strong>Dégats par clic : </strong>1</div>
-                <div class="score"><strong>Niveau global : </strong>0</div>
-                <div class="score"><strong>Améliorations débloquées : </strong>0/20</div>
+                <div class="score"><strong>Dégats par clic : </strong><span id="dmgClic">1</span></div>
+                <div class="score"><strong>Niveau global : </strong><span id="nvglobal"></span></div>
+                <div class="score"><strong>Améliorations débloquées : </strong><span id="ameldebloq"></span></div>
                 <div class="score"><strong>Temps de jeu : </strong><span id="tempsPasse"></span></div>
             </div>
 
@@ -116,7 +116,7 @@
                             ));
                             $donnees2 = $req2->fetch();
                             ?>
-                            <div id="autoclickamel<?php echo $donnees['idAmel']; ?>"
+                            <div id="autoclick<?php echo $donnees['idAmel']; ?>"
 															 class="waifu <?php if($donnees2['level']==0) echo "locked"; ?>">
 																<img class="iconImage" src="<?php echo $donnees['imageLink']; ?>" />
 																<div class="waifuName"> <?php echo $donnees['nom']; ?> </div>

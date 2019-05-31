@@ -28,7 +28,7 @@ if (isset($_SESSION["ID"]))
                 ));
                 $donnees2 = $req2->fetch();
                 if ($donnees2) {
-                    $resultat['ameliorations'] ["amel".$donnees['idAmel']] = array(
+                    $resultat['ameliorations'] [$donnees['idAmel']] = array(
                       'lvl' => $donnees2['level'],
                       'basedmg' => $donnees['baseDamage'],
                       'lvlup' => $donnees['coinsforlvlup'],
