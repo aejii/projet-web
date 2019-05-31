@@ -59,7 +59,7 @@
                 <div class="playerName"><strong> <?php echo $pseudo; ?></strong></div>
             </div>
 
-            <div id="scores"><div class="score"><strong>Dps Total : </strong>0</div>
+            <div id="scores"><div class="score"><strong>Dps Total : </strong><span id="dpsTotal"></span></div>
 								<div class="score"><strong>Nombre de clics : </strong><span id="nbClic"></span></div>
                 <div class="score"><strong>Dégats par clic : </strong>1</div>
                 <div class="score"><strong>Niveau global : </strong>0</div>
@@ -115,25 +115,30 @@
                                 "idAmel" => $donnees['idAmel']
                             ));
                             $donnees2 = $req2->fetch();
-                            if($donnees2['level']==0){
-                                ?>
-                                    <div id="autoclickamel<?php echo $donnees['idAmel']; ?>" class="waifu locked">
-                                        <img class="iconImage" src="<?php echo $donnees['imageLink']; ?>" /><div class="waifuName"> <?php echo $donnees['nom']; ?> </div><div class="upgLevel">Lv.<?php echo $donnees2['level'] ?></div>
-                                        <div class="damages">DPS: 0 (Suivant : +<?php echo $donnees['baseDamage']; ?>)</div><br/>
-                                        <button type="button" class="btn btn-lvlup disabled">NIVEAU SUP. !</button> Coût : <?php echo $donnees['coinsforlvlup']; ?> <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup disabled">x10</button>
-                                    </div>
-                                    <br/>
-                                <?php
-                            }else{
-                                ?>
-                                    <div id="autoclickamel<?php echo $donnees['idAmel']; ?>" class="waifu">
-                                        <img class="iconImage" src="<?php echo $donnees['imageLink']; ?>" /><div class="waifuName"> <?php echo $donnees['nom']; ?> </div><div class="upgLevel">Lv.<?php echo $donnees2['level'] ?></div>
-                                        <div class="damages">DPS: 0 (Suivant : +<?php echo $donnees['baseDamage']; ?>)</div><br/>
-                                        <button type="button" class="btn btn-lvlup">NIVEAU SUP. !</button> Coût : <?php echo $donnees['coinsforlvlup']; ?> <img id="tinyHeart" src="Images/heart.png"/> <button type="button" class="btn btn-lvlup">x10</button>
-                                    </div>
-                                    <br/>
-                                <?php
-                            }
+                            ?>
+                            <div id="autoclickamel<?php echo $donnees['idAmel']; ?>"
+															 class="waifu <?php if($donnees2['level']==0) echo "locked"; ?>">
+																<img class="iconImage" src="<?php echo $donnees['imageLink']; ?>" />
+																<div class="waifuName"> <?php echo $donnees['nom']; ?> </div>
+																<div class="upgLevel">Lv.
+																	<span id="upg<?php echo $donnees['idAmel']; ?>">
+																		<?php echo $donnees2['level'] ?>
+																	</span>
+																</div>
+																<div class="damages">DPS:
+																	<span id="dps<?php echo $donnees['idAmel']; ?>">
+																		0
+																	</span> (Suivant : +<?php echo $donnees['baseDamage']; ?>)</div><br/>
+																<button type="button" class="btn btn-lvlup disabled" onclick="upgrade(<?php echo $donnees['idAmel'];?>, 1)">NIVEAU SUP. !</button>
+																 Coût :
+																 <span id="cout<?php echo $donnees['idAmel']; ?>">
+																	 <?php echo $donnees['coinsforlvlup']; ?>
+																 </span>
+																 <img id="tinyHeart" src="Images/heart.png"/>
+																<button type="button" class="btn btn-lvlup disabled" onclick="upgrade(<?php echo $donnees['idAmel'];?>, 10)">x10</button>
+														</div>
+														<br/>
+														<?php
                         }
                     ?>
                 </div>

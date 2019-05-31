@@ -1,14 +1,10 @@
 /* Variable declarations */
 var score = 0;			//Counts the player click and bonuses, it's the score displayed on screen
-var bonusValue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //Current values of each bonus
-var hitGenerator = 0;	//Generator used to create the score from bonuses
 var login = "";
 var timeSpent = 0;
 var nbClic = 0;
 var ameliorations = {};
-/* Enumeration declaration */
-const NB_BONUSES = 20;
-const bonusList = {Karen_Kujo: 0, Kaori_Miyazono: 1, Nakano_Miku: 2, Erina: 3, Chitoge_Kirisaki: 4, Hikayu: 5, Tsugumi: 6, Fjorm: 7, Asuna: 8, Alice: 9, Lyn: 10, Cynthia: 11, Homura_Akemi: 12, Rem_Ram: 13, Fuwa_Aika: 14, Theresia_Van_Astrea: 15, Yurika_Nijino: 16, Emilia: 17, Tohru: 18, Megumin: 19};
+var dpsTotal = 0;
 
 load_data();
 /*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -21,6 +17,8 @@ function update()
 	document.getElementById("score").innerHTML = score; //Replaces the displayed score by the updated one
 	document.getElementById("tempsPasse").innerHTML = timeSpent +"s"; //Replaces the displayed time spent by the updated one
 	document.getElementById("nbClic").innerHTML = nbClic; //Replaces the displayed nb of clic by the updated one
+	document.getElementById("dpsTotal").innerHTML = dpsTotal; //Replaces the displayed nb of total dps by the updated one
+	score += dpsTotal;
 }
 
 
@@ -33,7 +31,7 @@ function update()
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
 function increase_score(value)
 {
-	score += value;		//Adds the given value to the score
+	score += paresInt(value);		//Adds the given value to the score
 	update();			//Updates the display of the score
 }
 
@@ -48,133 +46,6 @@ function hit()
 {
 	nbClic++;
 	increase_score(1);
-}
-
-
-/*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-| sum_bonuses: Sum all the bonuses contained in the bonusValue array to		|
-|			   determine the valuePerSecond rate for the autoclick function	|
-|																			|
-| returns:	int (the value summed)											|
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
-function sum_bonuses()
-{
-	let valuePerSecond = 0; //Value generated per second by bonuses
-
-
-	for (i = 0; i < NB_BONUSES; ++i) //The actual sum
-	{
-		valuePerSecond += bonusValue[i];
-	}
-
-	return valuePerSecond;
-}
-
-
-/*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-| autoclick: Increase the score automatically								|
-|																			|
-| valueToAddPerSecond:	value to add to the generator for each second		|
-|																			|
-| returns: 				void												|
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
-function autoclick(bonusName, valueToAddPerSecond)
-{
-	let valuePerSecond = 0; //Value generated per second by the bonuses
-
-
-	switch(bonusName)
-	{
-		//------------------------------------------------------------//
-		case 'Karen_Kujo':
-			bonusValue[bonusList.Karen_Kujo] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		case 'Kaori_Miyazono':
-			bonusValue[bonusList.Kaori_Miyazono] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		case 'Nakano_Miku':
-			bonusValue[bonusList.Nakano_Miku] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		case 'Erina':
-			bonusValue[bonusList.Erina] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		case 'Chitoge_Kirisaki':
-			bonusValue[bonusList.Chitoge_Kirisaki] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		case 'Hikayu':
-			bonusValue[bonusList.Hikayu] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		case 'Tsugumi':
-			bonusValue[bonusList.Tsugumi] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		case 'Fjorm':
-			bonusValue[bonusList.Fjorm] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		case 'Asuna':
-			bonusValue[bonusList.Asuna] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		case 'Alice':
-			bonusValue[bonusList.Alice] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		case 'Lyn':
-			bonusValue[bonusList.Lyn] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		case 'Cynthia':
-			bonusValue[bonusList.Cynthia] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		case 'Homura_Akemi':
-			bonusValue[bonusList.Homura_Akemi] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		case 'Rem_Ram':
-			bonusValue[bonusList.Rem_Ram] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		case 'Fuwa_Aika':
-			bonusValue[bonusList.Fuwa_Aika] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		case 'Theresia_Van_Astrea':
-			bonusValue[bonusList.Theresia_Van_Astrea] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		case 'Yurika_Nijino':
-			bonusValue[bonusList.Yurika_Nijino] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		case 'Emilia':
-			bonusValue[bonusList.Emilia] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		case 'Tohru':
-			bonusValue[bonusList.Tohru] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		case 'Megumin':
-			bonusValue[bonusList.Megumin] = valueToAddPerSecond;
-			break;
-		//------------------------------------------------------------//
-		default:
-			console.log("Script.js: autoclick("+bonusName+", "+valueToAddPerSecond+"): Error: Unknown bonus.");
-			break;
-	}
-
-	valuePerSecond = sum_bonuses();
-
-	clearInterval(window.hitGenerator);
-	window.hitGenerator = setInterval("increase_score(" + valuePerSecond + ")", 1000);
 }
 
 
@@ -198,6 +69,8 @@ function load_data()
 				timeSpent = parseInt(obj.tempsPasse);
 				nbClic = parseInt(obj.nbClic);
 				ameliorations = obj.ameliorations;
+
+				dps_total_initialisation();
 				//update affichage
 				update();
 
@@ -234,19 +107,82 @@ function save_data()
 					);
 }
 
-var x = document.getElementsByClassName("waifu");
-
+/*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+| unlock:	Unlock button if enough score point		|
+|																			|
+| returns:		void														|
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
 function unlock() {
 	Object.keys(ameliorations).forEach(function (item) {
-		if(score >= parseInt(ameliorations[item]['unlock']) ) {
-			var waifu = document.getElementById('autoclick'+ item);
+		var lvl = parseInt(ameliorations[item]['lvl']);
+		var lvlup = parseInt(ameliorations[item]['lvlup']);
+		var lvlcost = Math.floor(lvlup* Math.pow(1.1, (lvl)));
+		var lvlcost10 = Math.floor(lvlup* Math.pow(1.1, (lvl+10)));
+
+		var waifu = document.getElementById('autoclick'+ item);
+
+		if(parseInt(ameliorations[item]['lvl']) > 0 ||
+			score >= parseInt(ameliorations[item]['unlock'])) {
 			waifu.classList.remove("locked");
-			waifu.getElementsByTagName('button')[0].classList.remove("disabled");
 		}
-		// faire pareille pour x 10 ici
+
+		if(score >= lvlcost )
+		{
+			waifu.getElementsByTagName('button')[0].classList.remove("disabled");
+			waifu.getElementsByTagName('button')[0].disabled = false;
+		}
+		else {
+			waifu.getElementsByTagName('button')[0].classList.add("disabled");
+			waifu.getElementsByTagName('button')[0].disabled = true;
+		}
+
+		if(score >= lvlcost10 )
+		{
+			waifu.getElementsByTagName('button')[1].classList.remove("disabled");
+			waifu.getElementsByTagName('button')[1].disabled = false;
+		}
+		else {
+			waifu.getElementsByTagName('button')[1].classList.add("disabled");
+			waifu.getElementsByTagName('button')[1].disabled = true;
+		}
 	});
 }
 
+/*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+| upgrade:	Upgrade waifu level						|
+|																			|
+| returns:		void														|
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
+function upgrade(amelioration, times) {
+	var lvl = parseInt(ameliorations['amel'+amelioration]['lvl']);
+	var lvlup = parseInt(ameliorations['amel'+amelioration]['lvlup']);
+	var lvlcost = Math.floor(lvlup* Math.pow(1.1, (lvl)));
+	var nextlvlcost = Math.floor(lvlup* Math.pow(1.1, (lvl+times)));
+	var baseDmg = ameliorations['amel'+amelioration]['basedmg'];
+	var upg = document.getElementById("upg" + amelioration);
+	upg.innerHTML = lvl+times;
+	var dps = document.getElementById("dps" + amelioration);
+	dps.innerHTML = baseDmg * (lvl+times);
+	var cout = document.getElementById("cout" + amelioration);
+	cout.innerHTML = nextlvlcost;
+	ameliorations['amel'+amelioration]['lvl'] = lvl + times;
+	score -= lvlcost;
+	dpsTotal += parseInt(baseDmg*times);
+
+}
+/*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+| dps_total_initialisation:	Initialize the total damages per second	|
+|																			|
+| returns:		void														|
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
+function dps_total_initialisation()
+{
+	Object.keys(ameliorations).forEach(function (item) {
+		var lvl = parseInt(ameliorations[item]['lvl']);
+		var baseDmg = parseInt(ameliorations[item]['basedmg']);
+		dpsTotal+= baseDmg * lvl;
+	});
+}
 
 // action every 1 second
 setInterval(save_data, 1000);
