@@ -22,6 +22,7 @@ function update()
 	document.getElementById("dpsTotal").innerHTML = dpsTotal; //Replaces the displayed nb of total dps by the updated one
 	document.getElementById("nvglobal").innerHTML = nvglobal;
 	document.getElementById("ameldebloq").innerHTML = ameldebloq;
+	update_amelioration_display();
 }
 
 
@@ -157,19 +158,19 @@ function unlock() {
 |																			|
 | returns:		void														|
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
-function upgrade(amelioration, times) {
-	var lvl = parseInt(ameliorations[amelioration]['lvl']);
-	var lvlup = parseInt(ameliorations[amelioration]['lvlup']);
+function upgrade(item, times) {
+	var lvl = parseInt(ameliorations[item]['lvl']);
+	var lvlup = parseInt(ameliorations[item]['lvlup']);
 	var lvlcost = Math.floor(lvlup* Math.pow(1.1, (lvl)));
 	var nextlvlcost = Math.floor(lvlup* Math.pow(1.1, (lvl+times)));
-	var baseDmg = ameliorations[amelioration]['basedmg'];
-	var upg = document.getElementById("upg" + amelioration);
+	var baseDmg = ameliorations[item]['basedmg'];
+	var upg = document.getElementById("upg" + item);
 	upg.innerHTML = lvl+times;
-	var dps = document.getElementById("dps" + amelioration);
+	var dps = document.getElementById("dps" + item);
 	dps.innerHTML = baseDmg * (lvl+times);
-	var cout = document.getElementById("cout" + amelioration);
+	var cout = document.getElementById("cout" + item);
 	cout.innerHTML = nextlvlcost;
-	ameliorations[amelioration]['lvl'] = lvl + times;
+	ameliorations[item]['lvl'] = lvl + times;
 	score -= lvlcost;
 	dpsTotal += parseFloat(baseDmg*times);
 	nvglobal += times;
@@ -193,6 +194,29 @@ function initialisation()
 		if(lvl > 0 ) {
 			ameldebloq++;
 		}
+	});
+}
+
+/*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+| update_amelioration_display:	Update amelioration display									|
+|																			|
+| returns:		void														|
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
+function update_amelioration_display()
+{
+	Object.keys(ameliorations).forEach(function (item) {
+		var lvl = parseInt(ameliorations[item]['lvl']);
+		var lvlup = parseInt(ameliorations[item]['lvlup']);
+		var lvlcost = Math.floor(lvlup* Math.pow(1.1, (lvl)));
+
+		var baseDmg = ameliorations[item]['basedmg'];
+		var upg = document.getElementById("upg" + item);
+		upg.innerHTML = lvl;
+		var dps = document.getElementById("dps" + item);
+		dps.innerHTML = baseDmg * (lvl);
+		var cout = document.getElementById("cout" + item);
+		cout.innerHTML = lvlcost;
+		ameliorations[item]['lvl'] = lvl;
 	});
 }
 
