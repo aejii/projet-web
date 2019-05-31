@@ -63,7 +63,7 @@
                 <div class="score"><strong>Dégats par clic : </strong>1</div>
                 <div class="score"><strong>Niveau global : </strong>0</div>
                 <div class="score"><strong>Améliorations débloquées : </strong>0/20</div>
-                <div class="score"><strong>Temps de jeu : </strong>10m</div>
+                <div class="score"><strong>Temps de jeu : </strong><span id="tempsPasse"></span></div>
             </div>
 
             <div id="achievements">
@@ -146,7 +146,7 @@
         </div>
 
         <div id="center">
-            <span class="hearts" id="score">0</span><img id="heart" src="Images/heart.png"/>
+            <span class="hearts" id="score"></span><img id="heart" src="Images/heart.png"/>
             <img onselectstart="return false" oncontextmenu="return false" ondragstart="return false" onMouseOver="window.status='..message perso .. '; return true;" id="clicMe" class="pulse" src="Images/logoRond.png" onclick="hit()" />
         </div>
         <?php

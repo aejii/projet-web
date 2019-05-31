@@ -3,7 +3,7 @@ var score = 0;			//Counts the player click and bonuses, it's the score displayed
 var bonusValue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; //Current values of each bonus
 var hitGenerator = 0;	//Generator used to create the score from bonuses
 var login = "";
-
+var timeSpent = 0;
 /* Enumeration declaration */
 const NB_BONUSES = 20;
 const bonusList = {Karen_Kujo: 0, Kaori_Miyazono: 1, Nakano_Miku: 2, Erina: 3, Chitoge_Kirisaki: 4, Hikayu: 5, Tsugumi: 6, Fjorm: 7, Asuna: 8, Alice: 9, Lyn: 10, Cynthia: 11, Homura_Akemi: 12, Rem_Ram: 13, Fuwa_Aika: 14, Theresia_Van_Astrea: 15, Yurika_Nijino: 16, Emilia: 17, Tohru: 18, Megumin: 19};
@@ -17,6 +17,7 @@ load_data();
 function update()
 {
 	document.getElementById("score").innerHTML = score; //Replaces the displayed score by the updated one
+	document.getElementById("tempsPasse").innerHTML = timeSpent +"s"; //Replaces the displayed score by the updated one
 }
 
 
@@ -54,13 +55,13 @@ function hit()
 function sum_bonuses()
 {
 	let valuePerSecond = 0; //Value generated per second by bonuses
-	
-	
+
+
 	for (i = 0; i < NB_BONUSES; ++i) //The actual sum
 	{
 		valuePerSecond += bonusValue[i];
 	}
-	
+
 	return valuePerSecond;
 }
 
@@ -75,8 +76,8 @@ function sum_bonuses()
 function autoclick(bonusName, valueToAddPerSecond)
 {
 	let valuePerSecond = 0; //Value generated per second by the bonuses
-	
-	
+
+
 	switch(bonusName)
 	{
 		//------------------------------------------------------------//
@@ -136,7 +137,7 @@ function autoclick(bonusName, valueToAddPerSecond)
 			bonusValue[bonusList.Rem_Ram] = valueToAddPerSecond;
 			break;
 		//------------------------------------------------------------//
-		case Fuwa_Aika:
+		case 'Fuwa_Aika':
 			bonusValue[bonusList.Fuwa_Aika] = valueToAddPerSecond;
 			break;
 		//------------------------------------------------------------//
@@ -164,9 +165,9 @@ function autoclick(bonusName, valueToAddPerSecond)
 			console.log("Script.js: autoclick("+bonusName+", "+valueToAddPerSecond+"): Error: Unknown bonus.");
 			break;
 	}
-	
+
 	valuePerSecond = sum_bonuses();
-	
+
 	clearInterval(window.hitGenerator);
 	window.hitGenerator = setInterval("increase_score(" + valuePerSecond + ")", 1000);
 }
@@ -180,7 +181,7 @@ function autoclick(bonusName, valueToAddPerSecond)
 function load_data()
 {
 	var xhr = new XMLHttpRequest();
-		xhr.open("POST", "load.php", true);
+		xhr.open("POST", "loadData.php", true);
 		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function (e) {
 			if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
@@ -189,7 +190,7 @@ function load_data()
 
 				login = parseInt(obj.login);
 				score = parseInt(obj.score);
-
+				timeSpent = parseInt(obj.tempsPasse);
 				//update affichage
 				update();
 
@@ -207,8 +208,7 @@ function load_data()
 function save_data()
 {
 	var xhttp = new XMLHttpRequest();
-	
-	
+	timeSpent++;
 	xhttp.onreadystatechange = function()
 	{
 		if (this.readyState == 4 && this.status == 200)
@@ -216,11 +216,17 @@ function save_data()
 			console.log(this.responseText);
 		}
 	};
-		
-	xhttp.open("POST", "savedata.php", true);
+
+	xhttp.open("POST", "saveData.php", true);
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	xhttp.send("login=" + login + "&score=" + score);
+	xhttp.send("login=" + login +
+						"&score=" + score +
+						"&tempsPasse=" + timeSpent
+					);
 }
+
+// action every 1 second
+setInterval(save_data, 1000);
 
 
 /*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
