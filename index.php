@@ -41,7 +41,7 @@
         }
         else{
             require "connection.php";
-            $req = $bdd->prepare("SELECT id, pseudo, inscription, image, role, coins, nbClic, tempsPasse, ennemiestuees FROM utilisateurs WHERE id=:id");
+            $req = $bdd->prepare("SELECT id, pseudo, inscription, image, role, coins, nbClic, tempsPasse FROM utilisateurs WHERE id=:id");
             $req->execute(array(
                 "id" => $_SESSION["ID"]
             ));
@@ -60,6 +60,7 @@
             </div>
 
             <div id="scores"><div class="score"><strong>Dps Total : </strong>0</div>
+								<div class="score"><strong>Nombre de clics : </strong><span id="nbClic"></span></div>
                 <div class="score"><strong>Dégats par clic : </strong>1</div>
                 <div class="score"><strong>Niveau global : </strong>0</div>
                 <div class="score"><strong>Améliorations débloquées : </strong>0/20</div>

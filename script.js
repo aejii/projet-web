@@ -4,6 +4,7 @@ var bonusValue = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; /
 var hitGenerator = 0;	//Generator used to create the score from bonuses
 var login = "";
 var timeSpent = 0;
+var nbClic = 0;
 /* Enumeration declaration */
 const NB_BONUSES = 20;
 const bonusList = {Karen_Kujo: 0, Kaori_Miyazono: 1, Nakano_Miku: 2, Erina: 3, Chitoge_Kirisaki: 4, Hikayu: 5, Tsugumi: 6, Fjorm: 7, Asuna: 8, Alice: 9, Lyn: 10, Cynthia: 11, Homura_Akemi: 12, Rem_Ram: 13, Fuwa_Aika: 14, Theresia_Van_Astrea: 15, Yurika_Nijino: 16, Emilia: 17, Tohru: 18, Megumin: 19};
@@ -17,7 +18,9 @@ load_data();
 function update()
 {
 	document.getElementById("score").innerHTML = score; //Replaces the displayed score by the updated one
-	document.getElementById("tempsPasse").innerHTML = timeSpent +"s"; //Replaces the displayed score by the updated one
+	document.getElementById("tempsPasse").innerHTML = timeSpent +"s"; //Replaces the displayed time spent by the updated one
+	document.getElementById("nbClic").innerHTML = nbClic; //Replaces the displayed nb of clic by the updated one
+
 }
 
 
@@ -37,11 +40,13 @@ function increase_score(value)
 
 /*////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 | hit: Increase the score by 1 when the player clicks on the main button	|
+|      and increase number of click by 1																	|
 |																			|
 | returns:	void															|
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\////////////////////////////////////*/
 function hit()
 {
+	nbClic++;
 	increase_score(1);
 }
 
@@ -191,6 +196,7 @@ function load_data()
 				login = parseInt(obj.login);
 				score = parseInt(obj.score);
 				timeSpent = parseInt(obj.tempsPasse);
+				nbClic = parseInt(obj.nbClic);
 				//update affichage
 				update();
 
@@ -221,7 +227,8 @@ function save_data()
 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xhttp.send("login=" + login +
 						"&score=" + score +
-						"&tempsPasse=" + timeSpent
+						"&tempsPasse=" + timeSpent +
+						"&nbClic=" + nbClic
 					);
 }
 
